@@ -1,0 +1,29 @@
+# Segredos / credenciais
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials*
+secrets*
+token*
+*_token.txt
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Sistema / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Temporários
+tmp/
+temp/
+*.log
