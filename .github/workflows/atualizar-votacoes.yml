@@ -2,6 +2,11 @@ name: Atualizar votações do Senado
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/atualizar_votacoes_senado.py'
+      - '.github/workflows/atualizar-votacoes.yml'
   schedule:
     - cron: '17 9 * * *'
 
