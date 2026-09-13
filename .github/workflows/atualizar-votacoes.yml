@@ -1,0 +1,46 @@
+name: Atualizar votações do Senado
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 9 * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: atualizar-votacoes-senado
+  cancel-in-progress: false
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Atualizar votações a partir do Senado
+        run: python scripts/atualizar_votacoes_senado.py
+
+      - name: Verificar se houve mudança factual
+        id: diff
+        run: |
+          if git diff --quiet -- dados/votacoes_senado.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Publicar atualização
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/votacoes_senado.json
+          git commit -m "Atualiza votações oficiais do Senado"
+          git push
