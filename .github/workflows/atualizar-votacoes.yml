@@ -14,7 +14,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: atualizar-votacoes-senado
+  group: atualizar-votacoes-senado-v2
   cancel-in-progress: true
 
 jobs:
