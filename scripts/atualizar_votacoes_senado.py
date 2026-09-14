@@ -64,6 +64,8 @@ def strip_accents_text(s: Any) -> str:
 def normalize_vote(v: Any) -> tuple[str, str]:
     s = str(v or "").strip()
     n = re.sub(r"\s+", " ", strip_accents_text(s))
+    compact = re.sub(r"[^a-z0-9]+", "", n)
+
     if n in {"sim", "s"}:
         return "Sim", "sim"
     if n in {"nao", "n"}:
@@ -72,8 +74,29 @@ def normalize_vote(v: Any) -> tuple[str, str]:
         return "Abstenção", "abstencao"
     if "obstru" in n:
         return "Obstrução", "obstrucao"
-    if "licen" in n:
+
+    # Códigos canônicos usados pelo Senado.
+    if compact in {"pnrv"}:
+        return "Presente sem registrar voto", "presente_sem_voto"
+    if compact in {"ap"}:
+        return "Atividade parlamentar", "atividade_parlamentar"
+    if compact in {"ncom"}:
+        return "Ausência", "ausencia"
+    if compact in {"lp"}:
+        return "Licença particular", "licenca"
+    if compact in {"ls"}:
+        return "Licença saúde", "licenca"
+    if compact in {"ln"}:
         return "Licença", "licenca"
+    if compact in {"mis"}:
+        return "Missão", "missao"
+    if compact in {"merc"}:
+        return "Presente no Mercosul", "missao"
+    if compact in {"votou"}:
+        return "Votou (votação secreta)", "voto_secreto"
+
+    if "licen" in n:
+        return s or "Licença", "licenca"
     if "ausen" in n or "nao compareceu" in n:
         return "Ausência", "ausencia"
     if "presen" in n and ("nao registr" in n or "sem registr" in n or "sem voto" in n or "nao vot" in n):
@@ -88,10 +111,13 @@ def normalize_vote(v: Any) -> tuple[str, str]:
 
 
 def scalar_from(obj: Any, *names: str):
-    wanted = {norm_key(n) for n in names}
+    wanted = [norm_key(n) for n in names]
     if isinstance(obj, dict):
-        for k, v in obj.items():
-            if norm_key(k) in wanted and not isinstance(v, (dict, list)) and v not in (None, ""):
+        # Respeita a ordem de prioridade informada em names.
+        by_norm = {norm_key(k): v for k, v in obj.items()}
+        for wanted_key in wanted:
+            v = by_norm.get(wanted_key)
+            if not isinstance(v, (dict, list)) and v not in (None, ""):
                 return v
         for v in obj.values():
             found = scalar_from(v, *names)
@@ -116,7 +142,6 @@ def looks_like_vote_container(d: dict) -> bool:
 
 def infer_sigla(desc: Any) -> str:
     t = strip_accents_text(desc)
-    # Ordem importa: tipos mais específicos primeiro.
     patterns = [
         ("projeto de lei complementar", "PLP"),
         ("proposta de emenda a constituicao", "PEC"),
@@ -156,7 +181,9 @@ def parse(payload: Any) -> list[dict[str, Any]]:
     for d in walk(payload):
         if not isinstance(d, dict) or not looks_like_vote_container(d):
             continue
-        voto_raw = scalar_from(d, "DescricaoVoto", "Voto", "DescricaoVotacaoParlamentar")
+
+        # Campo canônico primeiro. DescricaoVoto é apenas fallback.
+        voto_raw = scalar_from(d, "Voto", "DescricaoVoto", "DescricaoVotacaoParlamentar")
         data = scalar_from(d, "DataSessao", "DataVotacao", "Data")
         numero = scalar_from(d, "NumeroMateria", "Numero")
         ano = scalar_from(d, "AnoMateria", "Ano")
@@ -203,6 +230,9 @@ def validate(votos: list[dict[str, Any]]) -> tuple[bool, str]:
     unknown = counts.get("outro", 0) + counts.get("nao_informado", 0)
     if unknown / len(votos) > 0.25:
         return False, f"muitos status não reconhecidos: {unknown}/{len(votos)}"
+    # Um histórico desta dimensão sem qualquer Sim/Não indica leitura do campo errado.
+    if counts.get("sim", 0) + counts.get("nao", 0) < 5:
+        return False, "histórico sem quantidade plausível de votos Sim/Não"
     missing_date = sum(not v.get("data") for v in votos)
     if missing_date:
         return False, f"{missing_date} registros sem data"
