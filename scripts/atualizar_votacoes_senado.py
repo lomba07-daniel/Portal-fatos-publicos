@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
-"""Atualiza dados/votacoes_senado.json a partir de fonte oficial do Senado.
+"""Coleta o histórico de votações nominais de um senador em arquivos anuais oficiais.
 
+Fonte: Senado Federal — Dados Abertos / ListaVotacoesAAAA.json
 Projeto: Portal Fatos Públicos
-Princípios:
-- usa somente fonte pública oficial;
-- não requer credenciais externas;
-- não transforma ausência/licença/presença em voto Sim ou Não;
-- mantém o conteúdo factual e rastreável;
-- falha com segurança se o schema deixar de ser reconhecido.
+
+Regras de segurança metodológica:
+- usa o campo canônico `Voto` do registro do parlamentar;
+- não converte ausência/licença/presença em Sim ou Não;
+- preserva o arquivo anterior se a fonte ou a validação falhar;
+- não usa credenciais externas.
 """
 from __future__ import annotations
 
@@ -21,39 +22,32 @@ from pathlib import Path
 from typing import Any
 
 SENADOR_ID = "5894"
+POLITICO_ID = "POL-000001"
+ANO_INICIAL = 2019
+ANO_ATUAL = datetime.now(timezone.utc).year
 OUT = Path("dados/votacoes_senado.json")
-URLS = [
-    f"https://legis.senado.leg.br/dadosabertos/senador/{SENADOR_ID}/votacoes.json",
-    f"https://legis.senado.leg.br/dadosabertos/senador/{SENADOR_ID}/votacoes",
-]
+BASE = "https://legis.senado.leg.br/dadosabertos/arquivos/ListaVotacoes{ano}.json"
+DOC = "https://www12.senado.leg.br/dados-abertos/legislativo/plenario/votacoes-nominais/info/webservice-de-votacoes-de-um-senador"
 HEADERS = {
     "User-Agent": "Portal-Fatos-Publicos/1.0 (+GitHub Pages; fonte oficial Senado)",
-    "Accept": "application/json, application/xml;q=0.8, */*;q=0.5",
+    "Accept": "application/json, */*;q=0.5",
 }
 
 
 def fetch_json(url: str) -> Any:
     req = urllib.request.Request(url, headers=HEADERS)
-    with urllib.request.urlopen(req, timeout=45) as r:
+    with urllib.request.urlopen(req, timeout=60) as r:
         raw = r.read()
         ctype = (r.headers.get("content-type") or "").lower()
     if "json" not in ctype and not raw.lstrip().startswith((b"{", b"[")):
-        raise ValueError(f"Resposta não JSON em {url}: {ctype}")
+        raise ValueError(f"Resposta não JSON: {ctype}")
     return json.loads(raw.decode("utf-8-sig"))
 
 
-def walk(obj: Any):
-    if isinstance(obj, dict):
-        yield obj
-        for v in obj.values():
-            yield from walk(v)
-    elif isinstance(obj, list):
-        for v in obj:
-            yield from walk(v)
-
-
-def norm_key(s: str) -> str:
-    return re.sub(r"[^a-z0-9]", "", str(s).lower())
+def as_list(v: Any) -> list:
+    if v is None:
+        return []
+    return v if isinstance(v, list) else [v]
 
 
 def strip_accents_text(s: Any) -> str:
@@ -74,29 +68,28 @@ def normalize_vote(v: Any) -> tuple[str, str]:
         return "Abstenção", "abstencao"
     if "obstru" in n:
         return "Obstrução", "obstrucao"
-
-    # Códigos canônicos usados pelo Senado.
-    if compact in {"pnrv"}:
+    if compact == "pnrv":
         return "Presente sem registrar voto", "presente_sem_voto"
-    if compact in {"ap"}:
+    if compact == "ap":
         return "Atividade parlamentar", "atividade_parlamentar"
-    if compact in {"ncom"}:
+    if compact == "ncom":
         return "Ausência", "ausencia"
-    if compact in {"lp"}:
+    if compact == "lp":
         return "Licença particular", "licenca"
-    if compact in {"ls"}:
+    if compact == "ls":
         return "Licença saúde", "licenca"
-    if compact in {"ln"}:
+    if compact == "ln":
         return "Licença", "licenca"
-    if compact in {"mis"}:
+    if compact == "mis":
         return "Missão", "missao"
-    if compact in {"merc"}:
+    if compact == "merc":
         return "Presente no Mercosul", "missao"
-    if compact in {"votou"}:
+    if compact == "votou":
         return "Votou (votação secreta)", "voto_secreto"
-
+    if "presidente" in n:
+        return s, "presidente"
     if "licen" in n:
-        return s or "Licença", "licenca"
+        return s, "licenca"
     if "ausen" in n or "nao compareceu" in n:
         return "Ausência", "ausencia"
     if "presen" in n and ("nao registr" in n or "sem registr" in n or "sem voto" in n or "nao vot" in n):
@@ -110,171 +103,131 @@ def normalize_vote(v: Any) -> tuple[str, str]:
     return s, "outro"
 
 
-def scalar_from(obj: Any, *names: str):
-    wanted = [norm_key(n) for n in names]
-    if isinstance(obj, dict):
-        # Respeita a ordem de prioridade informada em names.
-        by_norm = {norm_key(k): v for k, v in obj.items()}
-        for wanted_key in wanted:
-            v = by_norm.get(wanted_key)
-            if not isinstance(v, (dict, list)) and v not in (None, ""):
-                return v
-        for v in obj.values():
-            found = scalar_from(v, *names)
-            if found not in (None, ""):
-                return found
-    elif isinstance(obj, list):
-        for v in obj:
-            found = scalar_from(v, *names)
-            if found not in (None, ""):
-                return found
-    return None
+def norm_num(v: Any) -> str:
+    s = str(v or "").strip()
+    return s.lstrip("0") or ("0" if s else "")
 
 
-def looks_like_vote_container(d: dict) -> bool:
-    keys = {norm_key(k) for k in d.keys()}
-    markers = {
-        "descricaovoto", "voto", "descricaoresultado", "descricaovotacao",
-        "codigomateria", "numeromateria", "datasessao", "datavotacao"
-    }
-    return len(keys & markers) >= 2
+def parse_year(payload: Any, ano_arquivo: int, source_url: str) -> list[dict[str, Any]]:
+    root = payload.get("ListaVotacoes", {}) if isinstance(payload, dict) else {}
+    votacoes = root.get("Votacoes", {}) if isinstance(root, dict) else {}
+    items = votacoes.get("Votacao", []) if isinstance(votacoes, dict) else []
 
-
-def infer_sigla(desc: Any) -> str:
-    t = strip_accents_text(desc)
-    patterns = [
-        ("projeto de lei complementar", "PLP"),
-        ("proposta de emenda a constituicao", "PEC"),
-        ("projeto de decreto legislativo", "PDL"),
-        ("projeto de resolucao", "PRS"),
-        ("projeto de lei", "PL"),
-        ("medida provisoria", "MPV"),
-        ("mensagem", "MSF"),
-        ("requerimento", "RQS"),
-    ]
-    for phrase, sigla in patterns:
-        if phrase in t:
-            return sigla
-    return ""
-
-
-def schema_paths(obj: Any, prefix: str = "", depth: int = 0, max_depth: int = 6, out=None):
-    if out is None:
-        out = set()
-    if depth > max_depth or len(out) >= 120:
-        return out
-    if isinstance(obj, dict):
-        for k, v in obj.items():
-            p = f"{prefix}.{k}" if prefix else str(k)
-            typ = "dict" if isinstance(v, dict) else "list" if isinstance(v, list) else type(v).__name__
-            out.add(f"{p} [{typ}]")
-            if isinstance(v, (dict, list)):
-                schema_paths(v, p, depth + 1, max_depth, out)
-    elif isinstance(obj, list) and obj:
-        schema_paths(obj[0], prefix + "[]", depth + 1, max_depth, out)
-    return out
-
-
-def parse(payload: Any) -> list[dict[str, Any]]:
-    rows = []
-    seen = set()
-    for d in walk(payload):
-        if not isinstance(d, dict) or not looks_like_vote_container(d):
+    rows: list[dict[str, Any]] = []
+    for sessao in as_list(items):
+        if not isinstance(sessao, dict):
+            continue
+        votos_obj = sessao.get("Votos", {})
+        votos = votos_obj.get("VotoParlamentar", []) if isinstance(votos_obj, dict) else []
+        alvo = None
+        for vp in as_list(votos):
+            if isinstance(vp, dict) and str(vp.get("CodigoParlamentar", "")).strip() == SENADOR_ID:
+                alvo = vp
+                break
+        if alvo is None:
             continue
 
-        # Campo canônico primeiro. DescricaoVoto é apenas fallback.
-        voto_raw = scalar_from(d, "Voto", "DescricaoVoto", "DescricaoVotacaoParlamentar")
-        data = scalar_from(d, "DataSessao", "DataVotacao", "Data")
-        numero = scalar_from(d, "NumeroMateria", "Numero")
-        ano = scalar_from(d, "AnoMateria", "Ano")
-        desc_votacao = scalar_from(d, "DescricaoVotacao", "TextoVotacao")
-        sigla = scalar_from(d, "SiglaSubtipoMateria", "SiglaMateria", "SiglaTipoMateria") or infer_sigla(desc_votacao)
-        if voto_raw is None or data is None:
-            continue
-
+        voto_raw = alvo.get("Voto")
         voto, status = normalize_vote(voto_raw)
-        materia = " ".join(str(x).strip() for x in (sigla, numero) if x not in (None, ""))
-        if ano not in (None, ""):
-            materia = (materia + "/" + str(ano)).strip("/")
+        sigla = str(sessao.get("SiglaMateria") or sessao.get("SiglaSubtipoMateria") or "").strip()
+        numero = norm_num(sessao.get("NumeroMateria"))
+        ano_materia = str(sessao.get("AnoMateria") or "").strip()
+        materia = " ".join(x for x in (sigla, numero) if x)
+        if ano_materia:
+            materia = f"{materia}/{ano_materia}" if materia else ano_materia
         if not materia:
-            materia = str(desc_votacao or "Votação nominal")[:160]
+            materia = str(sessao.get("DescricaoIdentificacaoMateria") or "Votação nominal").strip()
 
-        cod = scalar_from(d, "CodigoMateria", "CodigoVotacao", "CodigoSessao")
-        key = (str(data), materia, voto, str(cod or ""), str(desc_votacao or ""))
-        if key in seen:
-            continue
-        seen.add(key)
+        data = str(sessao.get("DataSessao") or "").strip()[:10]
+        objeto = str(sessao.get("DescricaoVotacao") or sessao.get("DescricaoIdentificacaoMateria") or "").strip()
+        resultado = str(sessao.get("DescricaoResultado") or sessao.get("Resultado") or "").strip()
+
         rows.append({
-            "data": str(data)[:10],
+            "data": data,
             "materia": materia,
             "voto": voto,
             "status_voto": status,
-            "objeto": str(desc_votacao or "").strip(),
-            "contexto": "Registro obtido dos Dados Abertos do Senado Federal.",
-            "codigo_materia": str(scalar_from(d, "CodigoMateria") or ""),
-            "codigo_sessao": str(scalar_from(d, "CodigoSessao") or ""),
-            "resultado": str(scalar_from(d, "DescricaoResultado", "Resultado") or ""),
-            "url": "https://www12.senado.leg.br/dados-abertos/legislativo/plenario/votacoes-nominais",
+            "voto_original": str(voto_raw or "").strip(),
+            "descricao_voto": str(alvo.get("DescricaoVoto") or "").strip(),
+            "objeto": objeto,
+            "contexto": "Registro obtido do arquivo anual oficial de votação nominal do Senado Federal.",
+            "codigo_materia": str(sessao.get("CodigoMateria") or "").strip(),
+            "codigo_sessao": str(sessao.get("CodigoSessao") or "").strip(),
+            "codigo_sessao_votacao": str(sessao.get("CodigoSessaoVotacao") or "").strip(),
+            "resultado": resultado,
+            "ano_arquivo": ano_arquivo,
+            "url": source_url,
             "fonte": "Senado Federal — Dados Abertos",
         })
-    rows.sort(key=lambda x: (x.get("data", ""), x.get("materia", ""), x.get("objeto", "")), reverse=True)
     return rows
 
 
-def validate(votos: list[dict[str, Any]]) -> tuple[bool, str]:
-    if not votos:
-        return False, "nenhuma votação reconhecida"
-    if len(votos) < 20:
-        return False, f"quantidade inesperadamente baixa: {len(votos)}"
+def validate(votos: list[dict[str, Any]], anos_ok: list[int]) -> tuple[bool, str]:
+    if ANO_ATUAL not in anos_ok:
+        return False, f"arquivo do ano corrente ({ANO_ATUAL}) não foi carregado"
+    if len(anos_ok) < max(1, ANO_ATUAL - ANO_INICIAL):
+        return False, f"poucos anos carregados: {anos_ok}"
+    if len(votos) < 100:
+        return False, f"quantidade inesperadamente baixa de registros: {len(votos)}"
+
     counts = Counter(v["status_voto"] for v in votos)
+    valid_yes_no = counts.get("sim", 0) + counts.get("nao", 0)
+    if valid_yes_no < 20:
+        return False, f"poucos votos Sim/Não reconhecidos: {valid_yes_no}"
     unknown = counts.get("outro", 0) + counts.get("nao_informado", 0)
-    if unknown / len(votos) > 0.25:
+    if unknown / len(votos) > 0.15:
         return False, f"muitos status não reconhecidos: {unknown}/{len(votos)}"
-    # Um histórico desta dimensão sem qualquer Sim/Não indica leitura do campo errado.
-    if counts.get("sim", 0) + counts.get("nao", 0) < 5:
-        return False, "histórico sem quantidade plausível de votos Sim/Não"
-    missing_date = sum(not v.get("data") for v in votos)
-    if missing_date:
-        return False, f"{missing_date} registros sem data"
+    if any(not v.get("data") for v in votos):
+        return False, "há registros sem data"
+
     return True, ", ".join(f"{k}={v}" for k, v in sorted(counts.items()))
 
 
 def main() -> int:
-    payload = None
-    errors = []
-    source_url = None
-    for url in URLS:
+    all_rows: list[dict[str, Any]] = []
+    anos_ok: list[int] = []
+    erros: list[str] = []
+
+    for ano in range(ANO_INICIAL, ANO_ATUAL + 1):
+        url = BASE.format(ano=ano)
         try:
             payload = fetch_json(url)
-            source_url = url
-            break
+            rows = parse_year(payload, ano, url)
+            all_rows.extend(rows)
+            anos_ok.append(ano)
+            print(f"{ano}: {len(rows)} registros do parlamentar")
         except Exception as e:
-            errors.append(f"{url}: {e}")
-    if payload is None:
-        print("Falha ao obter dados do Senado:\n- " + "\n- ".join(errors), file=sys.stderr)
-        return 2
+            erros.append(f"{ano}: {type(e).__name__}: {e}")
+            print(f"Falha em {ano}: {e}", file=sys.stderr)
 
-    votos = parse(payload)
-    if not votos:
-        print(f"A fonte respondeu em {source_url}, mas nenhum voto reconhecível foi encontrado.", file=sys.stderr)
-        print("Schema observado (somente nomes de campos e tipos; sem valores):", file=sys.stderr)
-        for p in sorted(schema_paths(payload)):
-            print("- " + p, file=sys.stderr)
-        print("Arquivo anterior preservado.", file=sys.stderr)
-        return 3
+    # remove duplicidades por votação/sessão/parlamentar, preservando o registro mais informativo
+    uniq: dict[tuple[str, str, str, str], dict[str, Any]] = {}
+    for row in all_rows:
+        key = (
+            row.get("data", ""),
+            row.get("codigo_sessao_votacao", ""),
+            row.get("materia", ""),
+            row.get("objeto", ""),
+        )
+        uniq[key] = row
+    votos = list(uniq.values())
+    votos.sort(key=lambda x: (x.get("data", ""), x.get("codigo_sessao_votacao", ""), x.get("materia", "")), reverse=True)
 
-    ok, validation_msg = validate(votos)
+    ok, validation_msg = validate(votos, anos_ok)
     if not ok:
         print("Validação de segurança falhou: " + validation_msg, file=sys.stderr)
+        if erros:
+            print("Erros de coleta: " + " | ".join(erros), file=sys.stderr)
         print("Arquivo anterior preservado.", file=sys.stderr)
         return 4
 
     doc = {
-        "politico_id": "POL-000001",
+        "politico_id": POLITICO_ID,
         "senador_id": SENADOR_ID,
         "fonte": "Senado Federal — Dados Abertos",
-        "fonte_url_consulta": source_url,
-        "fonte_documentacao": "https://www12.senado.leg.br/dados-abertos/legislativo/plenario/votacoes-nominais/info/webservice-de-votacoes-de-um-senador",
+        "fonte_documentacao": DOC,
+        "arquivos_anuais": [BASE.format(ano=a) for a in anos_ok],
+        "anos_carregados": anos_ok,
         "atualizado_em_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "quantidade": len(votos),
         "validacao": validation_msg,
@@ -285,7 +238,8 @@ def main() -> int:
     tmp.write_text(json.dumps(doc, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     tmp.replace(OUT)
     print(f"OK: {len(votos)} votações gravadas em {OUT}")
-    print("Resumo da validação: " + validation_msg)
+    print("Anos: " + ", ".join(map(str, anos_ok)))
+    print("Resumo: " + validation_msg)
     return 0
 
 
