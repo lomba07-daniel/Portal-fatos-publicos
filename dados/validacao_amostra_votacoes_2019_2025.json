@@ -1,0 +1,314 @@
+{
+  "fonte": "Senado Federal — arquivos anuais oficiais ListaVotacoesAAAA.json",
+  "senador_id": "5894",
+  "criterio": "2 registros por ano; comparação independente de data, matéria, objeto, voto bruto, status e códigos oficiais",
+  "executado_em_utc": "2026-09-15T11:04:27+00:00",
+  "anos": [
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "quantidade_amostrada": 14,
+  "quantidade_aprovada": 14,
+  "resultado_geral": "aprovado",
+  "amostra": [
+    {
+      "ano": 2019,
+      "data": "2019-12-17",
+      "materia": "MPV 893/2019",
+      "objeto": "Dispõe sobre o Conselho de Controle de Atividades Financeiras (Coaf), de que trata o art. 14 da Lei nº 9.613, de 1998.",
+      "codigo_sessao_votacao": "6074",
+      "voto_portal": "Sim",
+      "voto_original_senado": "Sim",
+      "status_portal": "sim",
+      "checks": {
+        "data": true,
+        "materia": true,
+        "objeto": true,
+        "voto_original": true,
+        "status_voto": true,
+        "codigo_materia": true,
+        "codigo_sessao": true,
+        "codigo_sessao_votacao": true
+      },
+      "resultado": "aprovado"
+    },
+    {
+      "ano": 2019,
+      "data": "2019-11-19",
+      "materia": "PEC 133/2019",
+      "objeto": "Acrescenta à PEC 133/2019 a revogação das alíneas \"a\", \"b\" e \"c\" do art. 19 e art. 21, da Emenda Constitucional resultante da PEC 6/2019, já aprovada (idade mínima para fins de aposentadoria especial decorrente do exercício de atividade com efetiva exposição a agentes nocivos à saúde)",
+      "codigo_sessao_votacao": "6060",
+      "voto_portal": "Não",
+      "voto_original_senado": "Não",
+      "status_portal": "nao",
+      "checks": {
+        "data": true,
+        "materia": true,
+        "objeto": true,
+        "voto_original": true,
+        "status_voto": true,
+        "codigo_materia": true,
+        "codigo_sessao": true,
+        "codigo_sessao_votacao": true
+      },
+      "resultado": "aprovado"
+    },
+    {
+      "ano": 2020,
+      "data": "2020-12-15",
+      "materia": "PLP 101/2020",
+      "objeto": "Votação do Projeto de Lei Complementar nº 101, de 2020, que estabelece o Programa de Acompanhamento e Transparência Fiscal e o Plano de Promoção do Equilíbrio Fiscal.",
+      "codigo_sessao_votacao": "6265",
+      "voto_portal": "Sim",
+      "voto_original_senado": "Sim",
+      "status_portal": "sim",
+      "checks": {
+        "data": true,
+        "materia": true,
+        "objeto": true,
+        "voto_original": true,
+        "status_voto": true,
+        "codigo_materia": true,
+        "codigo_sessao": true,
+        "codigo_sessao_votacao": true
+      },
+      "resultado": "aprovado"
+    },
+    {
+      "ano": 2020,
+      "data": "2020-12-16",
+      "materia": "PLP 266/2020",
+      "objeto": "Votação do Projeto de Lei Complementar nº 266, de 2020 (Altera a Lei Complementar nº 173, de 2020, que estabelece o Programa Federativo de Enfrentamento ao Coronavírus SARS-CoV-2 (Covid-19) e dá outras providências.)",
+      "codigo_sessao_votacao": "6270",
+      "voto_portal": "Presente sem registrar voto",
+      "voto_original_senado": "P-NRV",
+      "status_portal": "presente_sem_voto",
+      "checks": {
+        "data": true,
+        "materia": true,
+        "objeto": true,
+        "voto_original": true,
+        "status_voto": true,
+        "codigo_materia": true,
+        "codigo_sessao": true,
+        "codigo_sessao_votacao": true
+      },
+      "resultado": "aprovado"
+    },
+    {
+      "ano": 2021,
+      "data": "2021-12-16",
+      "materia": "PEC 69/2019",
+      "objeto": "Votação nominal da PEC 69, de 2019, em primeiro turno.",
+      "codigo_sessao_votacao": "6500",
+      "voto_portal": "Não",
+      "voto_original_senado": "Não",
+      "status_portal": "nao",
+      "checks": {
+        "data": true,
+        "materia": true,
+        "objeto": true,
+        "voto_original": true,
+        "status_voto": true,
+        "codigo_materia": true,
+        "codigo_sessao": true,
+        "codigo_sessao_votacao": true
+      },
+      "resultado": "aprovado"
+    },
+    {
+      "ano": 2021,
+      "data": "2021-12-15",
+      "materia": "MSF 54/2021",
+      "objeto": "Votação nominal da Mensagem nº 54, de 2021.",
+      "codigo_sessao_votacao": "6496",
+      "voto_portal": "Votou (votação secreta)",
+      "voto_original_senado": "Votou",
+      "status_portal": "voto_secreto",
+      "checks": {
+        "data": true,
+        "materia": true,
+        "objeto": true,
+        "voto_original": true,
+        "status_voto": true,
+        "codigo_materia": true,
+        "codigo_sessao": true,
+        "codigo_sessao_votacao": true
+      },
+      "resultado": "aprovado"
+    },
+    {
+      "ano": 2022,
+      "data": "2022-12-20",
+      "materia": "PEC 32/2022",
+      "objeto": "Votação nominal do art. 8º da Proposta de Emenda à Constituição nº 32, de 2022, destacado.",
+      "codigo_sessao_votacao": "6672",
+      "voto_portal": "Sim",
+      "voto_original_senado": "Sim",
+      "status_portal": "sim",
+      "checks": {
+        "data": true,
+        "materia": true,
+        "objeto": true,
+        "voto_original": true,
+        "status_voto": true,
+        "codigo_materia": true,
+        "codigo_sessao": true,
+        "codigo_sessao_votacao": true
+      },
+      "resultado": "aprovado"
+    },
+    {
+      "ano": 2022,
+      "data": "2022-11-23",
+      "materia": "MSF 83/2022",
+      "objeto": "Votação nominal da Mensagem nº 83, de 2022 - Gustavo Martins Nogueira (Tanzânia, Comores e Seicheles).",
+      "codigo_sessao_votacao": "6652",
+      "voto_portal": "Presente sem registrar voto",
+      "voto_original_senado": "P-NRV",
+      "status_portal": "presente_sem_voto",
+      "checks": {
+        "data": true,
+        "materia": true,
+        "objeto": true,
+        "voto_original": true,
+        "status_voto": true,
+        "codigo_materia": true,
+        "codigo_sessao": true,
+        "codigo_sessao_votacao": true
+      },
+      "resultado": "aprovado"
+    },
+    {
+      "ano": 2023,
+      "data": "2023-12-20",
+      "materia": "MPV 1185/2023",
+      "objeto": "Votação nominal do PLV 20/2023 e Pressupostos Constitucionais da MPV 1.185/23, nos termos do Parecer, ressalvado o destaque.",
+      "codigo_sessao_votacao": "6816",
+      "voto_portal": "Não",
+      "voto_original_senado": "Não",
+      "status_portal": "nao",
+      "checks": {
+        "data": true,
+        "materia": true,
+        "objeto": true,
+        "voto_original": true,
+        "status_voto": true,
+        "codigo_materia": true,
+        "codigo_sessao": true,
+        "codigo_sessao_votacao": true
+      },
+      "resultado": "aprovado"
+    },
+    {
+      "ano": 2023,
+      "data": "2023-12-13",
+      "materia": "MSF 89/2023",
+      "objeto": "Votação nominal da Mensagem nº 89, de 2023 - Paulo Gustavo Gonet Branco (PGR).",
+      "codigo_sessao_votacao": "6815",
+      "voto_portal": "Votou (votação secreta)",
+      "voto_original_senado": "Votou",
+      "status_portal": "voto_secreto",
+      "checks": {
+        "data": true,
+        "materia": true,
+        "objeto": true,
+        "voto_original": true,
+        "status_voto": true,
+        "codigo_materia": true,
+        "codigo_sessao": true,
+        "codigo_sessao_votacao": true
+      },
+      "resultado": "aprovado"
+    },
+    {
+      "ano": 2024,
+      "data": "2024-12-19",
+      "materia": "PEC 54/2024",
+      "objeto": "Votação nominal do §11 do art. 37 da CF, constante da Emenda nº1 à Proposta de Emenda à Constituição 54/2024, destacado.",
+      "codigo_sessao_votacao": "6915",
+      "voto_portal": "Sim",
+      "voto_original_senado": "Sim",
+      "status_portal": "sim",
+      "checks": {
+        "data": true,
+        "materia": true,
+        "objeto": true,
+        "voto_original": true,
+        "status_voto": true,
+        "codigo_materia": true,
+        "codigo_sessao": true,
+        "codigo_sessao_votacao": true
+      },
+      "resultado": "aprovado"
+    },
+    {
+      "ano": 2024,
+      "data": "2024-12-19",
+      "materia": "PL 4614/2024",
+      "objeto": "Votação nominal do Projeto de Lei nº 4.614, de 2024, nos termos do parecer.",
+      "codigo_sessao_votacao": "6917",
+      "voto_portal": "Não",
+      "voto_original_senado": "Não",
+      "status_portal": "nao",
+      "checks": {
+        "data": true,
+        "materia": true,
+        "objeto": true,
+        "voto_original": true,
+        "status_voto": true,
+        "codigo_materia": true,
+        "codigo_sessao": true,
+        "codigo_sessao_votacao": true
+      },
+      "resultado": "aprovado"
+    },
+    {
+      "ano": 2025,
+      "data": "2025-05-28",
+      "materia": "MSF 1/2025",
+      "objeto": "Votação nominal da Mensagem nº 1, de 2025 - Ricardo José Lustosa Leal (Timor-Leste)",
+      "codigo_sessao_votacao": "6943",
+      "voto_portal": "Licença particular",
+      "voto_original_senado": "LP",
+      "status_portal": "licenca",
+      "checks": {
+        "data": true,
+        "materia": true,
+        "objeto": true,
+        "voto_original": true,
+        "status_voto": true,
+        "codigo_materia": true,
+        "codigo_sessao": true,
+        "codigo_sessao_votacao": true
+      },
+      "resultado": "aprovado"
+    },
+    {
+      "ano": 2025,
+      "data": "2025-09-17",
+      "materia": "MPV 1300/2025",
+      "objeto": "Votação nominal do PLV nº 4, de 2025 e dos pressupostos constitucionais da MPV nº 1.300, de 2025, nos termos do parecer, ressalvados os destaques.",
+      "codigo_sessao_votacao": "7011",
+      "voto_portal": "Abstenção",
+      "voto_original_senado": "Abstenção",
+      "status_portal": "abstencao",
+      "checks": {
+        "data": true,
+        "materia": true,
+        "objeto": true,
+        "voto_original": true,
+        "status_voto": true,
+        "codigo_materia": true,
+        "codigo_sessao": true,
+        "codigo_sessao_votacao": true
+      },
+      "resultado": "aprovado"
+    }
+  ]
+}
