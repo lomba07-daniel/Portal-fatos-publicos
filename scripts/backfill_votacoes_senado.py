@@ -3,6 +3,7 @@
 
 Reutiliza o mesmo parser/normalização já validado para 2026.
 Não altera a rotina diária, que continua leve e limitada ao ano corrente.
+Esta rotina é executada de forma controlada antes de integrar o histórico ao portal.
 """
 from __future__ import annotations
 
