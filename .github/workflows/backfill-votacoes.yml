@@ -6,6 +6,7 @@ on:
     branches: [main]
     paths:
       - 'scripts/backfill_votacoes_senado.py'
+      - '.github/workflows/backfill-votacoes.yml'
 
 permissions:
   contents: write
