@@ -1,0 +1,49 @@
+name: Backfill votações Senado 2019-2025
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/backfill_votacoes_senado.py'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: backfill-votacoes-senado
+  cancel-in-progress: true
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v5
+
+      - name: Configurar Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Coletar e validar 2019-2025
+        run: python scripts/backfill_votacoes_senado.py
+
+      - name: Verificar mudança
+        id: diff
+        run: |
+          if [ -n "$(git status --porcelain -- dados/votacoes_senado_historico.json)" ]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Publicar histórico validado
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/votacoes_senado_historico.json
+          git commit -m "Carrega histórico oficial de votações 2019-2025"
+          git push
