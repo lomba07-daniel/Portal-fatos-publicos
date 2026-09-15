@@ -1,0 +1,42 @@
+name: Validar amostra votações históricas
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/validar_amostra_votacoes_historicas.py'
+      - '.github/workflows/validar-amostra-votacoes-historicas.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: validar-amostra-votacoes-historicas
+  cancel-in-progress: true
+
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v5
+
+      - name: Configurar Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Validar 14 registros contra Senado
+        run: python scripts/validar_amostra_votacoes_historicas.py
+
+      - name: Publicar relatório de validação
+        run: |
+          if [ -n "$(git status --porcelain -- dados/validacao_amostra_votacoes_2019_2025.json)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add dados/validacao_amostra_votacoes_2019_2025.json
+            git commit -m "Registra validação amostral das votações 2019-2025"
+            git push
+          fi
