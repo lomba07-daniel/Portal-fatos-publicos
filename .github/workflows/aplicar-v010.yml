@@ -1,0 +1,47 @@
+name: Aplicar portal v0.10
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/aplicar_v010_portal.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: aplicar-v010-portal
+  cancel-in-progress: false
+
+jobs:
+  aplicar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v5
+      - name: Configurar Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Aplicar melhorias de fonte e busca
+        run: python scripts/aplicar_v010_portal.py
+      - name: Validar JavaScript
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          s=Path('index.html').read_text(encoding='utf-8')
+          a=s.index('<script>')+8
+          b=s.rindex('</script>')
+          Path('/tmp/portal.js').write_text(s[a:b],encoding='utf-8')
+          PY
+          node --check /tmp/portal.js
+      - name: Publicar v0.10
+        run: |
+          if [ -n "$(git status --porcelain -- index.html)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add index.html
+            git commit -m "Melhora fontes e busca temática do portal"
+            git push
+          fi
