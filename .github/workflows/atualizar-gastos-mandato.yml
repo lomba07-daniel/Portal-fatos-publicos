@@ -1,0 +1,52 @@
+name: Atualizar gastos do mandato no Senado
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/atualizar_gastos_mandato_senado.py'
+      - '.github/workflows/atualizar-gastos-mandato.yml'
+  schedule:
+    - cron: '37 9 * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: atualizar-gastos-mandato
+  cancel-in-progress: false
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v5
+
+      - name: Configurar Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Coletar e validar gastos 2019-2026
+        run: python scripts/atualizar_gastos_mandato_senado.py
+
+      - name: Verificar mudança
+        id: diff
+        run: |
+          if [ -n "$(git status --porcelain -- dados/gastos_mandato_senado.json)" ]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Publicar base atualizada
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/gastos_mandato_senado.json
+          git commit -m "Atualiza gastos oficiais do mandato no Senado"
+          git push
