@@ -1,0 +1,600 @@
+{
+  "politico_id": "POL-000001",
+  "senador_id": "5894",
+  "fonte": "Senado Federal — Transparência e Dados Abertos",
+  "escopo": "gastos_mandato_senado",
+  "anos": [
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025,
+    2026
+  ],
+  "ano_corrente_parcial": 2026,
+  "atualizado_em_utc": "2026-09-16T01:09:43+00:00",
+  "total_ceaps_periodo": 1226242.18,
+  "total_fora_ceaps_periodo": 922585.53,
+  "total_mostrado_periodo": 2148827.71,
+  "agregado_ceaps": [
+    {
+      "categoria": "Passagens aéreas, aquáticas e terrestres nacionais",
+      "valor": 521853.14
+    },
+    {
+      "categoria": "Aluguel de imóveis para escritório político",
+      "valor": 406862.29
+    },
+    {
+      "categoria": "Locomoção, hospedagem, alimentação e combustíveis",
+      "valor": 118265.84
+    },
+    {
+      "categoria": "Divulgação da atividade parlamentar",
+      "valor": 113850.0
+    },
+    {
+      "categoria": "Contratação de serviços de apoio ao parlamentar",
+      "valor": 54174.62
+    },
+    {
+      "categoria": "Aquisição de material de consumo",
+      "valor": 11236.29
+    },
+    {
+      "categoria": "Serviços de Segurança Privada",
+      "valor": 0.0
+    }
+  ],
+  "agregado_fora_ceaps": [
+    {
+      "categoria": "Correios",
+      "valor": 603734.46
+    },
+    {
+      "categoria": "Aquisição de passagens aéreas (ATC 2/2023)",
+      "valor": 169710.1
+    },
+    {
+      "categoria": "Consumo de Material - Outros materiais",
+      "valor": 58268.97
+    },
+    {
+      "categoria": "Viagens Oficiais - Diárias",
+      "valor": 57351.51
+    },
+    {
+      "categoria": "Cotas para Impulsionamento em Mídias Sociais",
+      "valor": 19001.22
+    },
+    {
+      "categoria": "Viagens Oficiais - Ressarcimento de Passagens",
+      "valor": 14519.27
+    }
+  ],
+  "por_ano": [
+    {
+      "ano": 2019,
+      "parcial": false,
+      "ceaps": [
+        {
+          "categoria": "Aluguel de imóveis para escritório político",
+          "valor": 45856.22
+        },
+        {
+          "categoria": "Aquisição de material de consumo",
+          "valor": 2474.13
+        },
+        {
+          "categoria": "Locomoção, hospedagem, alimentação e combustíveis",
+          "valor": 71822.76
+        },
+        {
+          "categoria": "Contratação de serviços de apoio ao parlamentar",
+          "valor": 0.0
+        },
+        {
+          "categoria": "Divulgação da atividade parlamentar",
+          "valor": 0.0
+        },
+        {
+          "categoria": "Passagens aéreas, aquáticas e terrestres nacionais",
+          "valor": 59560.79
+        },
+        {
+          "categoria": "Serviços de Segurança Privada",
+          "valor": 0.0
+        }
+      ],
+      "total_ceaps": 179713.9,
+      "fora_ceaps": [
+        {
+          "categoria": "Viagens Oficiais - Diárias",
+          "valor": 8694.4
+        },
+        {
+          "categoria": "Viagens Oficiais - Ressarcimento de Passagens",
+          "valor": 7993.0
+        },
+        {
+          "categoria": "Consumo de Material - Outros materiais",
+          "valor": 7852.16
+        },
+        {
+          "categoria": "Correios",
+          "valor": 11062.66
+        },
+        {
+          "categoria": "Cotas para Impulsionamento em Mídias Sociais",
+          "valor": 0.0
+        },
+        {
+          "categoria": "Aquisição de passagens aéreas (ATC 2/2023)",
+          "valor": 0.0
+        }
+      ],
+      "total_fora_ceaps": 35602.22,
+      "total_mostrado": 215316.12,
+      "fonte_api": "https://adm.senado.gov.br/adm-dadosabertos/api/v1/senadores/5894/recursos-utilizados?ano=2019&formato=json",
+      "fonte_visual": "https://www6g.senado.leg.br/transparencia/sen/5894/?ano=2019"
+    },
+    {
+      "ano": 2020,
+      "parcial": false,
+      "ceaps": [
+        {
+          "categoria": "Aluguel de imóveis para escritório político",
+          "valor": 52395.37
+        },
+        {
+          "categoria": "Aquisição de material de consumo",
+          "valor": 605.16
+        },
+        {
+          "categoria": "Locomoção, hospedagem, alimentação e combustíveis",
+          "valor": 663.51
+        },
+        {
+          "categoria": "Contratação de serviços de apoio ao parlamentar",
+          "valor": 0.0
+        },
+        {
+          "categoria": "Divulgação da atividade parlamentar",
+          "valor": 0.0
+        },
+        {
+          "categoria": "Passagens aéreas, aquáticas e terrestres nacionais",
+          "valor": 32740.75
+        },
+        {
+          "categoria": "Serviços de Segurança Privada",
+          "valor": 0.0
+        }
+      ],
+      "total_ceaps": 86404.79,
+      "fora_ceaps": [
+        {
+          "categoria": "Viagens Oficiais - Diárias",
+          "valor": 12520.14
+        },
+        {
+          "categoria": "Viagens Oficiais - Ressarcimento de Passagens",
+          "valor": 6526.27
+        },
+        {
+          "categoria": "Consumo de Material - Outros materiais",
+          "valor": 2756.79
+        },
+        {
+          "categoria": "Correios",
+          "valor": 539.95
+        },
+        {
+          "categoria": "Cotas para Impulsionamento em Mídias Sociais",
+          "valor": 0.0
+        },
+        {
+          "categoria": "Aquisição de passagens aéreas (ATC 2/2023)",
+          "valor": 0.0
+        }
+      ],
+      "total_fora_ceaps": 22343.15,
+      "total_mostrado": 108747.94,
+      "fonte_api": "https://adm.senado.gov.br/adm-dadosabertos/api/v1/senadores/5894/recursos-utilizados?ano=2020&formato=json",
+      "fonte_visual": "https://www6g.senado.leg.br/transparencia/sen/5894/?ano=2020"
+    },
+    {
+      "ano": 2021,
+      "parcial": false,
+      "ceaps": [
+        {
+          "categoria": "Aluguel de imóveis para escritório político",
+          "valor": 46474.5
+        },
+        {
+          "categoria": "Aquisição de material de consumo",
+          "valor": 35.1
+        },
+        {
+          "categoria": "Locomoção, hospedagem, alimentação e combustíveis",
+          "valor": 0.0
+        },
+        {
+          "categoria": "Contratação de serviços de apoio ao parlamentar",
+          "valor": 36000.0
+        },
+        {
+          "categoria": "Divulgação da atividade parlamentar",
+          "valor": 18000.0
+        },
+        {
+          "categoria": "Passagens aéreas, aquáticas e terrestres nacionais",
+          "valor": 35157.95
+        },
+        {
+          "categoria": "Serviços de Segurança Privada",
+          "valor": 0.0
+        }
+      ],
+      "total_ceaps": 135667.55,
+      "fora_ceaps": [
+        {
+          "categoria": "Viagens Oficiais - Diárias",
+          "valor": 26979.26
+        },
+        {
+          "categoria": "Viagens Oficiais - Ressarcimento de Passagens",
+          "valor": 0.0
+        },
+        {
+          "categoria": "Consumo de Material - Outros materiais",
+          "valor": 3361.19
+        },
+        {
+          "categoria": "Correios",
+          "valor": 40995.51
+        },
+        {
+          "categoria": "Cotas para Impulsionamento em Mídias Sociais",
+          "valor": 0.0
+        },
+        {
+          "categoria": "Aquisição de passagens aéreas (ATC 2/2023)",
+          "valor": 0.0
+        }
+      ],
+      "total_fora_ceaps": 71335.96,
+      "total_mostrado": 207003.51,
+      "fonte_api": "https://adm.senado.gov.br/adm-dadosabertos/api/v1/senadores/5894/recursos-utilizados?ano=2021&formato=json",
+      "fonte_visual": "https://www6g.senado.leg.br/transparencia/sen/5894/?ano=2021"
+    },
+    {
+      "ano": 2022,
+      "parcial": false,
+      "ceaps": [
+        {
+          "categoria": "Aluguel de imóveis para escritório político",
+          "valor": 52039.01
+        },
+        {
+          "categoria": "Aquisição de material de consumo",
+          "valor": 0.0
+        },
+        {
+          "categoria": "Locomoção, hospedagem, alimentação e combustíveis",
+          "valor": 1659.26
+        },
+        {
+          "categoria": "Contratação de serviços de apoio ao parlamentar",
+          "valor": 18000.0
+        },
+        {
+          "categoria": "Divulgação da atividade parlamentar",
+          "valor": 90000.0
+        },
+        {
+          "categoria": "Passagens aéreas, aquáticas e terrestres nacionais",
+          "valor": 89063.41
+        },
+        {
+          "categoria": "Serviços de Segurança Privada",
+          "valor": 0.0
+        }
+      ],
+      "total_ceaps": 250761.68,
+      "fora_ceaps": [
+        {
+          "categoria": "Viagens Oficiais - Diárias",
+          "valor": 0.0
+        },
+        {
+          "categoria": "Viagens Oficiais - Ressarcimento de Passagens",
+          "valor": 0.0
+        },
+        {
+          "categoria": "Consumo de Material - Outros materiais",
+          "valor": 8062.03
+        },
+        {
+          "categoria": "Correios",
+          "valor": 64907.48
+        },
+        {
+          "categoria": "Cotas para Impulsionamento em Mídias Sociais",
+          "valor": 0.0
+        },
+        {
+          "categoria": "Aquisição de passagens aéreas (ATC 2/2023)",
+          "valor": 0.0
+        }
+      ],
+      "total_fora_ceaps": 72969.51,
+      "total_mostrado": 323731.19,
+      "fonte_api": "https://adm.senado.gov.br/adm-dadosabertos/api/v1/senadores/5894/recursos-utilizados?ano=2022&formato=json",
+      "fonte_visual": "https://www6g.senado.leg.br/transparencia/sen/5894/?ano=2022"
+    },
+    {
+      "ano": 2023,
+      "parcial": false,
+      "ceaps": [
+        {
+          "categoria": "Aluguel de imóveis para escritório político",
+          "valor": 62030.28
+        },
+        {
+          "categoria": "Aquisição de material de consumo",
+          "valor": 0.0
+        },
+        {
+          "categoria": "Locomoção, hospedagem, alimentação e combustíveis",
+          "valor": 1264.92
+        },
+        {
+          "categoria": "Contratação de serviços de apoio ao parlamentar",
+          "valor": 0.0
+        },
+        {
+          "categoria": "Divulgação da atividade parlamentar",
+          "valor": 1850.0
+        },
+        {
+          "categoria": "Passagens aéreas, aquáticas e terrestres nacionais",
+          "valor": 57097.0
+        },
+        {
+          "categoria": "Serviços de Segurança Privada",
+          "valor": 0.0
+        }
+      ],
+      "total_ceaps": 122242.2,
+      "fora_ceaps": [
+        {
+          "categoria": "Viagens Oficiais - Diárias",
+          "valor": 9157.71
+        },
+        {
+          "categoria": "Viagens Oficiais - Ressarcimento de Passagens",
+          "valor": 0.0
+        },
+        {
+          "categoria": "Consumo de Material - Outros materiais",
+          "valor": 10356.53
+        },
+        {
+          "categoria": "Correios",
+          "valor": 152753.87
+        },
+        {
+          "categoria": "Cotas para Impulsionamento em Mídias Sociais",
+          "valor": 19001.22
+        },
+        {
+          "categoria": "Aquisição de passagens aéreas (ATC 2/2023)",
+          "valor": 45422.62
+        }
+      ],
+      "total_fora_ceaps": 236691.95,
+      "total_mostrado": 358934.15,
+      "fonte_api": "https://adm.senado.gov.br/adm-dadosabertos/api/v1/senadores/5894/recursos-utilizados?ano=2023&formato=json",
+      "fonte_visual": "https://www6g.senado.leg.br/transparencia/sen/5894/?ano=2023"
+    },
+    {
+      "ano": 2024,
+      "parcial": false,
+      "ceaps": [
+        {
+          "categoria": "Aluguel de imóveis para escritório político",
+          "valor": 53586.86
+        },
+        {
+          "categoria": "Aquisição de material de consumo",
+          "valor": 18.2
+        },
+        {
+          "categoria": "Locomoção, hospedagem, alimentação e combustíveis",
+          "valor": 19877.32
+        },
+        {
+          "categoria": "Contratação de serviços de apoio ao parlamentar",
+          "valor": 0.0
+        },
+        {
+          "categoria": "Divulgação da atividade parlamentar",
+          "valor": 0.0
+        },
+        {
+          "categoria": "Passagens aéreas, aquáticas e terrestres nacionais",
+          "valor": 107131.24
+        },
+        {
+          "categoria": "Serviços de Segurança Privada",
+          "valor": 0.0
+        }
+      ],
+      "total_ceaps": 180613.62,
+      "fora_ceaps": [
+        {
+          "categoria": "Viagens Oficiais - Diárias",
+          "valor": 0.0
+        },
+        {
+          "categoria": "Viagens Oficiais - Ressarcimento de Passagens",
+          "valor": 0.0
+        },
+        {
+          "categoria": "Consumo de Material - Outros materiais",
+          "valor": 9123.88
+        },
+        {
+          "categoria": "Correios",
+          "valor": 159401.5
+        },
+        {
+          "categoria": "Cotas para Impulsionamento em Mídias Sociais",
+          "valor": 0.0
+        },
+        {
+          "categoria": "Aquisição de passagens aéreas (ATC 2/2023)",
+          "valor": 81175.23
+        }
+      ],
+      "total_fora_ceaps": 249700.61,
+      "total_mostrado": 430314.23,
+      "fonte_api": "https://adm.senado.gov.br/adm-dadosabertos/api/v1/senadores/5894/recursos-utilizados?ano=2024&formato=json",
+      "fonte_visual": "https://www6g.senado.leg.br/transparencia/sen/5894/?ano=2024"
+    },
+    {
+      "ano": 2025,
+      "parcial": false,
+      "ceaps": [
+        {
+          "categoria": "Aluguel de imóveis para escritório político",
+          "valor": 56958.11
+        },
+        {
+          "categoria": "Aquisição de material de consumo",
+          "valor": 8103.7
+        },
+        {
+          "categoria": "Locomoção, hospedagem, alimentação e combustíveis",
+          "valor": 18345.35
+        },
+        {
+          "categoria": "Contratação de serviços de apoio ao parlamentar",
+          "valor": 85.3
+        },
+        {
+          "categoria": "Divulgação da atividade parlamentar",
+          "valor": 4000.0
+        },
+        {
+          "categoria": "Passagens aéreas, aquáticas e terrestres nacionais",
+          "valor": 102147.39
+        },
+        {
+          "categoria": "Serviços de Segurança Privada",
+          "valor": 0.0
+        }
+      ],
+      "total_ceaps": 189639.85,
+      "fora_ceaps": [
+        {
+          "categoria": "Viagens Oficiais - Diárias",
+          "valor": 0.0
+        },
+        {
+          "categoria": "Viagens Oficiais - Ressarcimento de Passagens",
+          "valor": 0.0
+        },
+        {
+          "categoria": "Consumo de Material - Outros materiais",
+          "valor": 10245.22
+        },
+        {
+          "categoria": "Correios",
+          "valor": 161288.81
+        },
+        {
+          "categoria": "Cotas para Impulsionamento em Mídias Sociais",
+          "valor": 0.0
+        },
+        {
+          "categoria": "Aquisição de passagens aéreas (ATC 2/2023)",
+          "valor": 43112.25
+        }
+      ],
+      "total_fora_ceaps": 214646.28,
+      "total_mostrado": 404286.13,
+      "fonte_api": "https://adm.senado.gov.br/adm-dadosabertos/api/v1/senadores/5894/recursos-utilizados?ano=2025&formato=json",
+      "fonte_visual": "https://www6g.senado.leg.br/transparencia/sen/5894/?ano=2025"
+    },
+    {
+      "ano": 2026,
+      "parcial": true,
+      "ceaps": [
+        {
+          "categoria": "Aluguel de imóveis para escritório político",
+          "valor": 37521.94
+        },
+        {
+          "categoria": "Aquisição de material de consumo",
+          "valor": 0.0
+        },
+        {
+          "categoria": "Locomoção, hospedagem, alimentação e combustíveis",
+          "valor": 4632.72
+        },
+        {
+          "categoria": "Contratação de serviços de apoio ao parlamentar",
+          "valor": 89.32
+        },
+        {
+          "categoria": "Divulgação da atividade parlamentar",
+          "valor": 0.0
+        },
+        {
+          "categoria": "Passagens aéreas, aquáticas e terrestres nacionais",
+          "valor": 38954.61
+        },
+        {
+          "categoria": "Serviços de Segurança Privada",
+          "valor": 0.0
+        }
+      ],
+      "total_ceaps": 81198.59,
+      "fora_ceaps": [
+        {
+          "categoria": "Viagens Oficiais - Diárias",
+          "valor": 0.0
+        },
+        {
+          "categoria": "Viagens Oficiais - Ressarcimento de Passagens",
+          "valor": 0.0
+        },
+        {
+          "categoria": "Consumo de Material - Outros materiais",
+          "valor": 6511.17
+        },
+        {
+          "categoria": "Correios",
+          "valor": 12784.68
+        },
+        {
+          "categoria": "Cotas para Impulsionamento em Mídias Sociais",
+          "valor": 0.0
+        },
+        {
+          "categoria": "Aquisição de passagens aéreas (ATC 2/2023)",
+          "valor": 0.0
+        }
+      ],
+      "total_fora_ceaps": 19295.85,
+      "total_mostrado": 100494.44,
+      "fonte_api": "https://adm.senado.gov.br/adm-dadosabertos/api/v1/senadores/5894/recursos-utilizados?ano=2026&formato=json",
+      "fonte_visual": "https://www6g.senado.leg.br/transparencia/sen/5894/?ano=2026"
+    }
+  ],
+  "observacao": "Valores oficiais agregados pelo Senado. O ano corrente é parcial e pode sofrer alterações, estornos ou ajustes posteriores."
+}
