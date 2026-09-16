@@ -1,0 +1,44 @@
+name: Atualizar catálogo de candidatos TSE 2026
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/atualizar_catalogo_candidatos_tse.py'
+      - '.github/workflows/atualizar-catalogo-candidatos-tse.yml'
+  schedule:
+    - cron: '23 2,8,14,20 * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: atualizar-catalogo-candidatos-tse
+  cancel-in-progress: false
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v5
+
+      - name: Configurar Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Coletar catálogo oficial do TSE
+        run: python scripts/atualizar_catalogo_candidatos_tse.py
+
+      - name: Publicar catálogo quando houver mudança
+        run: |
+          if [ -n "$(git status --porcelain -- dados/candidatos_2026.json)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add dados/candidatos_2026.json
+            git commit -m "Atualiza catálogo oficial de candidatos 2026"
+            git push
+          fi
