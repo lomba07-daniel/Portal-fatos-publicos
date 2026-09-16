@@ -1,0 +1,53 @@
+name: Aplicar portal v0.11 gastos
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/aplicar_v011_gastos.py'
+      - '.github/workflows/aplicar-v011-gastos.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: aplicar-v011-gastos
+  cancel-in-progress: false
+
+jobs:
+  aplicar:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v5
+
+      - name: Configurar Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Aplicar painel visual de gastos
+        run: python scripts/aplicar_v011_gastos.py
+
+      - name: Validar JavaScript
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          s=Path('index.html').read_text(encoding='utf-8')
+          a=s.index('<script>')+8
+          b=s.rindex('</script>')
+          Path('/tmp/portal.js').write_text(s[a:b],encoding='utf-8')
+          PY
+          node --check /tmp/portal.js
+
+      - name: Publicar v0.11
+        run: |
+          if [ -n "$(git status --porcelain -- index.html)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add index.html
+            git commit -m "Adiciona painel visual de gastos do mandato"
+            git push
+          fi
