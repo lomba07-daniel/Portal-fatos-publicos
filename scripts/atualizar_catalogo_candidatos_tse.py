@@ -19,13 +19,21 @@ CARGOS={'PRESIDENTE','GOVERNADOR','SENADOR','DEPUTADO FEDERAL','DEPUTADO ESTADUA
 
 def fetch_bytes(url:str)->bytes:
     ultimo=None
+    headers={
+        'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0 Safari/537.36',
+        'Referer':'https://dadosabertos.tse.jus.br/',
+        'Accept':'application/zip,application/octet-stream,*/*;q=0.8',
+        'Accept-Language':'pt-BR,pt;q=0.9,en;q=0.8',
+        'Cache-Control':'no-cache',
+    }
     for i in range(1,MAX_TENTATIVAS+1):
         try:
-            req=urllib.request.Request(url,headers={'User-Agent':'Portal-Fatos-Publicos/1.0'})
+            req=urllib.request.Request(url,headers=headers)
             with urllib.request.urlopen(req,timeout=180) as r:
                 return r.read()
         except Exception as exc:
             ultimo=exc
+            print(f'Tentativa {i}/{MAX_TENTATIVAS} falhou: {type(exc).__name__}: {exc}')
             if i<MAX_TENTATIVAS:
                 time.sleep(3*i)
     raise RuntimeError(f'Falha ao baixar TSE após {MAX_TENTATIVAS} tentativas: {ultimo}') from ultimo
