@@ -1,0 +1,59 @@
+name: Atualizar emendas parlamentares CGU
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/atualizar_emendas_cgu.py'
+      - 'scripts/aplicar_v013_emendas_completas.py'
+      - '.github/workflows/atualizar-emendas-cgu.yml'
+  schedule:
+    - cron: '41 10 * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: atualizar-emendas-cgu
+  cancel-in-progress: false
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v5
+
+      - name: Configurar Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Coletar base oficial de emendas
+        run: python scripts/atualizar_emendas_cgu.py
+
+      - name: Integrar emendas ao portal
+        run: python scripts/aplicar_v013_emendas_completas.py
+
+      - name: Validar JavaScript
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          s=Path('index.html').read_text(encoding='utf-8')
+          a=s.index('<script>')+8
+          b=s.rindex('</script>')
+          Path('/tmp/portal.js').write_text(s[a:b],encoding='utf-8')
+          PY
+          node --check /tmp/portal.js
+
+      - name: Publicar base e portal
+        run: |
+          if [ -n "$(git status --porcelain -- dados/emendas_parlamentares.json index.html)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add dados/emendas_parlamentares.json index.html
+            git commit -m "Atualiza emendas oficiais e integra ao portal"
+            git push
+          fi
