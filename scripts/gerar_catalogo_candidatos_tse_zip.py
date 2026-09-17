@@ -165,6 +165,8 @@ def main() -> None:
         "Governador": 201,
         "Senador": 319,
         "Deputado Federal": 7801,
+        "Deputado Estadual": 11292,
+        "Deputado Distrital": 433,
     }
     for cargo, minimo in esperados.items():
         if len(por_cargo[cargo]) != minimo:
