@@ -1,0 +1,138 @@
+{
+  "ano": 2026,
+  "fonte": "Tribunal Superior Eleitoral — Dados Abertos",
+  "fonte_url": "https://dadosabertos.tse.jus.br/dataset/candidatos-2026",
+  "arquivo_origem": "consulta_cand_2026_BRASIL.csv",
+  "gerado_pelo_tse_em": "16/09/2026 19:31:04",
+  "quantidade_publicada": 8335,
+  "por_cargo": {
+    "Presidente": 14,
+    "Governador": 201,
+    "Senador": 319,
+    "Deputado Federal": 7801
+  },
+  "cargas_iniciais": [
+    {
+      "arquivo": "dados/candidatos_executivos_2026.b64",
+      "quantidade": 215
+    },
+    {
+      "arquivo": "dados/candidatos_senado_2026.b64",
+      "quantidade": 319
+    }
+  ],
+  "cargas_por_cargo": {
+    "Deputado Federal": {
+      "AC": {
+        "arquivo": "dados/candidatos_deputado_federal_2026_ac.b64",
+        "quantidade": 102
+      },
+      "AL": {
+        "arquivo": "dados/candidatos_deputado_federal_2026_al.b64",
+        "quantidade": 118
+      },
+      "AM": {
+        "arquivo": "dados/candidatos_deputado_federal_2026_am.b64",
+        "quantidade": 139
+      },
+      "AP": {
+        "arquivo": "dados/candidatos_deputado_federal_2026_ap.b64",
+        "quantidade": 91
+      },
+      "BA": {
+        "arquivo": "dados/candidatos_deputado_federal_2026_ba.b64",
+        "quantidade": 535
+      },
+      "CE": {
+        "arquivo": "dados/candidatos_deputado_federal_2026_ce.b64",
+        "quantidade": 295
+      },
+      "DF": {
+        "arquivo": "dados/candidatos_deputado_federal_2026_df.b64",
+        "quantidade": 172
+      },
+      "ES": {
+        "arquivo": "dados/candidatos_deputado_federal_2026_es.b64",
+        "quantidade": 137
+      },
+      "GO": {
+        "arquivo": "dados/candidatos_deputado_federal_2026_go.b64",
+        "quantidade": 265
+      },
+      "MA": {
+        "arquivo": "dados/candidatos_deputado_federal_2026_ma.b64",
+        "quantidade": 282
+      },
+      "MG": {
+        "arquivo": "dados/candidatos_deputado_federal_2026_mg.b64",
+        "quantidade": 756
+      },
+      "MS": {
+        "arquivo": "dados/candidatos_deputado_federal_2026_ms.b64",
+        "quantidade": 124
+      },
+      "MT": {
+        "arquivo": "dados/candidatos_deputado_federal_2026_mt.b64",
+        "quantidade": 138
+      },
+      "PA": {
+        "arquivo": "dados/candidatos_deputado_federal_2026_pa.b64",
+        "quantidade": 268
+      },
+      "PB": {
+        "arquivo": "dados/candidatos_deputado_federal_2026_pb.b64",
+        "quantidade": 190
+      },
+      "PE": {
+        "arquivo": "dados/candidatos_deputado_federal_2026_pe.b64",
+        "quantidade": 392
+      },
+      "PI": {
+        "arquivo": "dados/candidatos_deputado_federal_2026_pi.b64",
+        "quantidade": 164
+      },
+      "PR": {
+        "arquivo": "dados/candidatos_deputado_federal_2026_pr.b64",
+        "quantidade": 428
+      },
+      "RJ": {
+        "arquivo": "dados/candidatos_deputado_federal_2026_rj.b64",
+        "quantidade": 793
+      },
+      "RN": {
+        "arquivo": "dados/candidatos_deputado_federal_2026_rn.b64",
+        "quantidade": 111
+      },
+      "RO": {
+        "arquivo": "dados/candidatos_deputado_federal_2026_ro.b64",
+        "quantidade": 134
+      },
+      "RR": {
+        "arquivo": "dados/candidatos_deputado_federal_2026_rr.b64",
+        "quantidade": 108
+      },
+      "RS": {
+        "arquivo": "dados/candidatos_deputado_federal_2026_rs.b64",
+        "quantidade": 458
+      },
+      "SC": {
+        "arquivo": "dados/candidatos_deputado_federal_2026_sc.b64",
+        "quantidade": 231
+      },
+      "SE": {
+        "arquivo": "dados/candidatos_deputado_federal_2026_se.b64",
+        "quantidade": 141
+      },
+      "SP": {
+        "arquivo": "dados/candidatos_deputado_federal_2026_sp.b64",
+        "quantidade": 1131
+      },
+      "TO": {
+        "arquivo": "dados/candidatos_deputado_federal_2026_to.b64",
+        "quantidade": 98
+      }
+    }
+  },
+  "estrategia": "Cargas iniciais compactas e candidaturas legislativas carregadas sob demanda por cargo e UF.",
+  "minimizacao": "CPF, e-mail, data de nascimento, título eleitoral e outros campos pessoais não necessários não são publicados."
+}
