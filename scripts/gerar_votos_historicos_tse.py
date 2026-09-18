@@ -48,19 +48,23 @@ def main() -> None:
     manifesto_hist = json.loads(
         (args.saida / "dados/historico_candidaturas_manifesto_2026.json").read_text(encoding="utf-8")
     )
-    alvos: dict[tuple[str, str, str], tuple[str, str]] = {}
+    alvos: dict[tuple[str, str, str, str], tuple[str, str]] = {}
+    chave_por_atual: dict[tuple[str, str, str, str], tuple[str, str, str, str]] = {}
     for uf, referencia in manifesto_hist["arquivos_por_uf_atual"].items():
         doc = ler_b64(args.saida / referencia["arquivo"])
         for atual, historicos in doc["historicos"].items():
             for item in historicos:
                 sq = item.get("sq_candidato_eleicao", "")
                 if sq:
-                    alvos[(item["ano"], sq, item.get("turno", "1"))] = (uf, atual)
+                    uf_eleicao = "*" if item.get("cargo") == "Presidente" else item.get("uf", "")
+                    chave = (item["ano"], sq, item.get("turno", "1"), uf_eleicao)
+                    alvos[chave] = (uf, atual)
+                    chave_por_atual[(atual, item["ano"], sq, item.get("turno", "1"))] = chave
 
     if len(alvos) < 40_000:
         raise SystemExit(f"Apenas {len(alvos)} candidaturas históricas identificáveis; base incompleta.")
 
-    totais: dict[tuple[str, str, str], list[int]] = defaultdict(lambda: [0, 0])
+    totais: dict[tuple[str, str, str, str], list[int]] = defaultdict(lambda: [0, 0])
     anos: list[int] = []
     linhas_lidas = 0
     linhas_aproveitadas = 0
@@ -75,12 +79,15 @@ def main() -> None:
         linhas_aproveitadas = int(anterior.get("linhas_oficiais_aproveitadas", 0))
         for referencia in anterior.get("arquivos_por_uf_atual", {}).values():
             doc = ler_b64(args.saida / referencia["arquivo"])
-            for itens in doc.get("votos", {}).values():
+            for atual, itens in doc.get("votos", {}).items():
                 for item in itens:
                     if int(item["ano"]) in anos_entrada:
                         continue
-                    chave = (item["ano"], item["sq_candidato_eleicao"], item["turno"])
-                    totais[chave] = [int(item["votos_nominais"]), int(item["votos_nominais_validos"])]
+                    chave = chave_por_atual.get(
+                        (atual, item["ano"], item["sq_candidato_eleicao"], item["turno"])
+                    )
+                    if chave:
+                        totais[chave] = [int(item["votos_nominais"]), int(item["votos_nominais_validos"])]
 
     for zip_path in args.zips:
         match = re.search(r"(20\d{2}|19\d{2})", zip_path.name)
@@ -102,16 +109,28 @@ def main() -> None:
                             geracoes[ano] = " ".join(
                                 filter(None, [linha.get("DT_GERACAO", "").strip(), linha.get("HH_GERACAO", "").strip()])
                             )
-                        chave = (ano, linha.get("SQ_CANDIDATO", "").strip(), linha.get("NR_TURNO", "").strip())
+                        base = (ano, linha.get("SQ_CANDIDATO", "").strip(), linha.get("NR_TURNO", "").strip())
+                        chave = base + (linha.get("SG_UF", "").strip(),)
+                        if chave not in alvos:
+                            chave = base + ("*",)
                         if chave not in alvos:
                             continue
                         totais[chave][0] += inteiro(linha.get("QT_VOTOS_NOMINAIS"))
                         totais[chave][1] += inteiro(linha.get("QT_VOTOS_NOMINAIS_VALIDOS"))
                         linhas_aproveitadas += 1
 
+    grupos_saida: dict[tuple[str, str, str, str], list[tuple[str, str, str, str]]] = defaultdict(list)
+    for chave in totais:
+        ano, sq, turno, _uf_eleicao = chave
+        _uf_atual, atual = alvos[chave]
+        grupos_saida[(atual, ano, sq, turno)].append(chave)
+    ambiguas = {chave for grupo in grupos_saida.values() if len(grupo) > 1 for chave in grupo}
+
     por_uf: dict[str, dict[str, list[dict[str, object]]]] = defaultdict(lambda: defaultdict(list))
     for chave, (votos, validos) in totais.items():
-        ano, sq, turno = chave
+        if chave in ambiguas:
+            continue
+        ano, sq, turno, _uf_eleicao = chave
         uf, atual = alvos[chave]
         por_uf[uf][atual].append({
             "ano": ano,
@@ -157,8 +176,9 @@ def main() -> None:
         "quantidade_candidaturas_com_votos": candidaturas_com_votos,
         "linhas_oficiais_processadas": linhas_lidas,
         "linhas_oficiais_aproveitadas": linhas_aproveitadas,
+        "associacoes_ambiguas_excluidas": len(ambiguas),
         "arquivos_por_uf_atual": arquivos,
-        "observacao": "Totais agregados por candidatura e turno; arquivos brutos por município e zona não são publicados.",
+        "observacao": "Totais agregados por candidatura e turno; arquivos brutos por município e zona não são publicados. Colisões antigas de identificador entre UFs são excluídas.",
     }
     (dados / "votos_historicos_manifesto_2026.json").write_text(
         json.dumps(manifesto, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
