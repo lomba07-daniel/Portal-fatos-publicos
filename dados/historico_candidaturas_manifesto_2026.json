@@ -1,0 +1,157 @@
+{
+  "ano_referencia": 2026,
+  "fonte": "Tribunal Superior Eleitoral — Histórico de candidaturas",
+  "fonte_url": "https://dadosabertos.tse.jus.br/dataset/candidatos-2026",
+  "gerado_pelo_tse_em": "18/09/2026 05:34:21",
+  "quantidade_candidatos_com_historico": 18351,
+  "quantidade_candidatos_sem_historico": 1709,
+  "quantidade_candidatos_no_catalogo": 20060,
+  "quantidade_registros": 53904,
+  "periodo": {
+    "inicio": 2004,
+    "fim": 2026
+  },
+  "arquivos_por_uf_atual": {
+    "AC": {
+      "arquivo": "dados/historico_candidaturas_2026_ac.b64",
+      "quantidade_candidatos": 353,
+      "quantidade_registros": 936
+    },
+    "AL": {
+      "arquivo": "dados/historico_candidaturas_2026_al.b64",
+      "quantidade_candidatos": 222,
+      "quantidade_registros": 786
+    },
+    "AM": {
+      "arquivo": "dados/historico_candidaturas_2026_am.b64",
+      "quantidade_candidatos": 428,
+      "quantidade_registros": 1303
+    },
+    "AP": {
+      "arquivo": "dados/historico_candidaturas_2026_ap.b64",
+      "quantidade_candidatos": 288,
+      "quantidade_registros": 764
+    },
+    "BA": {
+      "arquivo": "dados/historico_candidaturas_2026_ba.b64",
+      "quantidade_candidatos": 1133,
+      "quantidade_registros": 3133
+    },
+    "BR": {
+      "arquivo": "dados/historico_candidaturas_2026_br.b64",
+      "quantidade_candidatos": 11,
+      "quantidade_registros": 41
+    },
+    "CE": {
+      "arquivo": "dados/historico_candidaturas_2026_ce.b64",
+      "quantidade_candidatos": 623,
+      "quantidade_registros": 1919
+    },
+    "DF": {
+      "arquivo": "dados/historico_candidaturas_2026_df.b64",
+      "quantidade_candidatos": 498,
+      "quantidade_registros": 979
+    },
+    "ES": {
+      "arquivo": "dados/historico_candidaturas_2026_es.b64",
+      "quantidade_candidatos": 487,
+      "quantidade_registros": 1524
+    },
+    "GO": {
+      "arquivo": "dados/historico_candidaturas_2026_go.b64",
+      "quantidade_candidatos": 773,
+      "quantidade_registros": 2355
+    },
+    "MA": {
+      "arquivo": "dados/historico_candidaturas_2026_ma.b64",
+      "quantidade_candidatos": 548,
+      "quantidade_registros": 1712
+    },
+    "MG": {
+      "arquivo": "dados/historico_candidaturas_2026_mg.b64",
+      "quantidade_candidatos": 1622,
+      "quantidade_registros": 4873
+    },
+    "MS": {
+      "arquivo": "dados/historico_candidaturas_2026_ms.b64",
+      "quantidade_candidatos": 365,
+      "quantidade_registros": 1151
+    },
+    "MT": {
+      "arquivo": "dados/historico_candidaturas_2026_mt.b64",
+      "quantidade_candidatos": 393,
+      "quantidade_registros": 1225
+    },
+    "PA": {
+      "arquivo": "dados/historico_candidaturas_2026_pa.b64",
+      "quantidade_candidatos": 645,
+      "quantidade_registros": 1877
+    },
+    "PB": {
+      "arquivo": "dados/historico_candidaturas_2026_pb.b64",
+      "quantidade_candidatos": 400,
+      "quantidade_registros": 1363
+    },
+    "PE": {
+      "arquivo": "dados/historico_candidaturas_2026_pe.b64",
+      "quantidade_candidatos": 846,
+      "quantidade_registros": 2491
+    },
+    "PI": {
+      "arquivo": "dados/historico_candidaturas_2026_pi.b64",
+      "quantidade_candidatos": 320,
+      "quantidade_registros": 860
+    },
+    "PR": {
+      "arquivo": "dados/historico_candidaturas_2026_pr.b64",
+      "quantidade_candidatos": 1031,
+      "quantidade_registros": 3183
+    },
+    "RJ": {
+      "arquivo": "dados/historico_candidaturas_2026_rj.b64",
+      "quantidade_candidatos": 1744,
+      "quantidade_registros": 5031
+    },
+    "RN": {
+      "arquivo": "dados/historico_candidaturas_2026_rn.b64",
+      "quantidade_candidatos": 275,
+      "quantidade_registros": 701
+    },
+    "RO": {
+      "arquivo": "dados/historico_candidaturas_2026_ro.b64",
+      "quantidade_candidatos": 356,
+      "quantidade_registros": 1031
+    },
+    "RR": {
+      "arquivo": "dados/historico_candidaturas_2026_rr.b64",
+      "quantidade_candidatos": 331,
+      "quantidade_registros": 910
+    },
+    "RS": {
+      "arquivo": "dados/historico_candidaturas_2026_rs.b64",
+      "quantidade_candidatos": 944,
+      "quantidade_registros": 2785
+    },
+    "SC": {
+      "arquivo": "dados/historico_candidaturas_2026_sc.b64",
+      "quantidade_candidatos": 598,
+      "quantidade_registros": 1810
+    },
+    "SE": {
+      "arquivo": "dados/historico_candidaturas_2026_se.b64",
+      "quantidade_candidatos": 369,
+      "quantidade_registros": 1045
+    },
+    "SP": {
+      "arquivo": "dados/historico_candidaturas_2026_sp.b64",
+      "quantidade_candidatos": 2443,
+      "quantidade_registros": 7137
+    },
+    "TO": {
+      "arquivo": "dados/historico_candidaturas_2026_to.b64",
+      "quantidade_candidatos": 305,
+      "quantidade_registros": 979
+    }
+  },
+  "observacao": "Ausência de registro significa apenas que não foi localizada candidatura anterior no recurso histórico do TSE."
+}
