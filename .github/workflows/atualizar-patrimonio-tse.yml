@@ -33,11 +33,11 @@ jobs:
         run: python -m pip install --disable-pip-version-check 'curl_cffi==0.13.0'
       - name: Baixar bens oficiais
         run: |
-          for ano in 2022 2024 2026; do
+          for ano in 2016 2018 2020 2022 2024 2026; do
             python scripts/baixar_bens_candidatos_tse.py "$ano" "/tmp/bem_candidato_${ano}.zip"
           done
       - name: Gerar e validar cargas patrimoniais
-        run: python scripts/gerar_patrimonio_historico_tse.py /tmp/bem_candidato_2022.zip /tmp/bem_candidato_2024.zip /tmp/bem_candidato_2026.zip --saida .
+        run: python scripts/gerar_patrimonio_historico_tse.py /tmp/bem_candidato_2016.zip /tmp/bem_candidato_2018.zip /tmp/bem_candidato_2020.zip /tmp/bem_candidato_2022.zip /tmp/bem_candidato_2024.zip /tmp/bem_candidato_2026.zip --saida .
       - name: Publicar quando houver mudança
         run: |
           if [ -n "$(git status --porcelain -- dados/patrimonio_historico_2026_*.b64 dados/patrimonio_historico_manifesto_2026.json)" ]; then
