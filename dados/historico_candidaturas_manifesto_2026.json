@@ -2,11 +2,11 @@
   "ano_referencia": 2026,
   "fonte": "Tribunal Superior Eleitoral — Histórico de candidaturas",
   "fonte_url": "https://dadosabertos.tse.jus.br/dataset/candidatos-2026",
-  "gerado_pelo_tse_em": "18/09/2026 05:34:21",
+  "gerado_pelo_tse_em": "18/09/2026 08:34:30",
   "quantidade_candidatos_com_historico": 18351,
   "quantidade_candidatos_sem_historico": 1709,
   "quantidade_candidatos_no_catalogo": 20060,
-  "quantidade_registros": 53904,
+  "quantidade_registros": 53915,
   "periodo": {
     "inicio": 2004,
     "fim": 2026
@@ -20,7 +20,7 @@
     "AL": {
       "arquivo": "dados/historico_candidaturas_2026_al.b64",
       "quantidade_candidatos": 222,
-      "quantidade_registros": 786
+      "quantidade_registros": 787
     },
     "AM": {
       "arquivo": "dados/historico_candidaturas_2026_am.b64",
@@ -35,7 +35,7 @@
     "BA": {
       "arquivo": "dados/historico_candidaturas_2026_ba.b64",
       "quantidade_candidatos": 1133,
-      "quantidade_registros": 3133
+      "quantidade_registros": 3134
     },
     "BR": {
       "arquivo": "dados/historico_candidaturas_2026_br.b64",
@@ -45,7 +45,7 @@
     "CE": {
       "arquivo": "dados/historico_candidaturas_2026_ce.b64",
       "quantidade_candidatos": 623,
-      "quantidade_registros": 1919
+      "quantidade_registros": 1920
     },
     "DF": {
       "arquivo": "dados/historico_candidaturas_2026_df.b64",
@@ -60,7 +60,7 @@
     "GO": {
       "arquivo": "dados/historico_candidaturas_2026_go.b64",
       "quantidade_candidatos": 773,
-      "quantidade_registros": 2355
+      "quantidade_registros": 2356
     },
     "MA": {
       "arquivo": "dados/historico_candidaturas_2026_ma.b64",
@@ -70,7 +70,7 @@
     "MG": {
       "arquivo": "dados/historico_candidaturas_2026_mg.b64",
       "quantidade_candidatos": 1622,
-      "quantidade_registros": 4873
+      "quantidade_registros": 4875
     },
     "MS": {
       "arquivo": "dados/historico_candidaturas_2026_ms.b64",
@@ -80,7 +80,7 @@
     "MT": {
       "arquivo": "dados/historico_candidaturas_2026_mt.b64",
       "quantidade_candidatos": 393,
-      "quantidade_registros": 1225
+      "quantidade_registros": 1226
     },
     "PA": {
       "arquivo": "dados/historico_candidaturas_2026_pa.b64",
@@ -110,7 +110,7 @@
     "RJ": {
       "arquivo": "dados/historico_candidaturas_2026_rj.b64",
       "quantidade_candidatos": 1744,
-      "quantidade_registros": 5031
+      "quantidade_registros": 5033
     },
     "RN": {
       "arquivo": "dados/historico_candidaturas_2026_rn.b64",
@@ -135,7 +135,7 @@
     "SC": {
       "arquivo": "dados/historico_candidaturas_2026_sc.b64",
       "quantidade_candidatos": 598,
-      "quantidade_registros": 1810
+      "quantidade_registros": 1811
     },
     "SE": {
       "arquivo": "dados/historico_candidaturas_2026_se.b64",
@@ -145,7 +145,7 @@
     "SP": {
       "arquivo": "dados/historico_candidaturas_2026_sp.b64",
       "quantidade_candidatos": 2443,
-      "quantidade_registros": 7137
+      "quantidade_registros": 7138
     },
     "TO": {
       "arquivo": "dados/historico_candidaturas_2026_to.b64",
