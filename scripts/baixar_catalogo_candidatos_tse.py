@@ -16,16 +16,26 @@ from pathlib import Path
 from curl_cffi import requests
 
 
-URL = "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/consulta_cand_2026.zip"
-ARQUIVO_ESPERADO = "consulta_cand_2026_BRASIL.csv"
+RECURSOS = {
+    "catalogo": (
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/consulta_cand_2026.zip",
+        "consulta_cand_2026_BRASIL.csv",
+    ),
+    "historico": (
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/historico_candidatura/historico_candidatura_2026.zip",
+        "historico_candidatura_2026_BRASIL.csv",
+    ),
+}
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("destino", type=Path)
+    parser.add_argument("--recurso", choices=tuple(RECURSOS), default="catalogo")
     args = parser.parse_args()
+    url, arquivo_esperado = RECURSOS[args.recurso]
 
-    resposta = requests.get(URL, impersonate="chrome", timeout=180)
+    resposta = requests.get(url, impersonate="chrome", timeout=180)
     resposta.raise_for_status()
     if len(resposta.content) < 500_000:
         raise SystemExit(f"Download do TSE anormalmente pequeno: {len(resposta.content)} bytes.")
@@ -37,8 +47,8 @@ def main() -> None:
 
     try:
         with zipfile.ZipFile(temporario) as zf:
-            if ARQUIVO_ESPERADO not in zf.namelist():
-                raise SystemExit(f"{ARQUIVO_ESPERADO} não encontrado no ZIP oficial.")
+            if arquivo_esperado not in zf.namelist():
+                raise SystemExit(f"{arquivo_esperado} não encontrado no ZIP oficial.")
             corrompido = zf.testzip()
             if corrompido:
                 raise SystemExit(f"Arquivo corrompido dentro do ZIP oficial: {corrompido}")
@@ -46,7 +56,7 @@ def main() -> None:
     finally:
         temporario.unlink(missing_ok=True)
 
-    print(f"OK: {args.destino} ({args.destino.stat().st_size} bytes) baixado diretamente de {URL}")
+    print(f"OK: {args.destino} ({args.destino.stat().st_size} bytes) baixado diretamente de {url}")
 
 
 if __name__ == "__main__":
