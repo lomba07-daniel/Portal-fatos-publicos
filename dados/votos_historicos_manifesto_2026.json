@@ -1,5 +1,9 @@
 {
   "anos_carregados": [
+    2014,
+    2016,
+    2018,
+    2020,
     2022,
     2024
   ],
@@ -7,151 +11,155 @@
   "fonte_url": "https://dadosabertos.tse.jus.br/",
   "gerado_pelo_tse_em": {
     "2024": "18/09/2026 02:17:09",
-    "2022": "18/09/2026 03:16:42"
+    "2022": "18/09/2026 03:16:42",
+    "2020": "06/01/2026 16:45:04",
+    "2018": "13/11/2024 10:56:11",
+    "2016": "19/01/2026 14:01:28",
+    "2014": "28/07/2021 11:54:31"
   },
-  "quantidade_candidaturas_com_votos": 13098,
-  "linhas_oficiais_processadas": 10095093,
-  "linhas_oficiais_aproveitadas": 2170268,
+  "quantidade_candidaturas_com_votos": 28706,
+  "linhas_oficiais_processadas": 28607171,
+  "linhas_oficiais_aproveitadas": 4244752,
   "arquivos_por_uf_atual": {
     "AC": {
       "arquivo": "dados/votos_historicos_2026_ac.b64",
-      "quantidade_candidatos": 172,
-      "quantidade_candidaturas_com_votos": 196
+      "quantidade_candidatos": 225,
+      "quantidade_candidaturas_com_votos": 440
     },
     "AL": {
       "arquivo": "dados/votos_historicos_2026_al.b64",
-      "quantidade_candidatos": 148,
-      "quantidade_candidaturas_com_votos": 177
+      "quantidade_candidatos": 177,
+      "quantidade_candidaturas_com_votos": 404
     },
     "AM": {
       "arquivo": "dados/votos_historicos_2026_am.b64",
-      "quantidade_candidatos": 239,
-      "quantidade_candidaturas_com_votos": 312
+      "quantidade_candidatos": 307,
+      "quantidade_candidaturas_com_votos": 700
     },
     "AP": {
       "arquivo": "dados/votos_historicos_2026_ap.b64",
-      "quantidade_candidatos": 139,
-      "quantidade_candidaturas_com_votos": 167
+      "quantidade_candidatos": 175,
+      "quantidade_candidaturas_com_votos": 398
     },
     "BA": {
       "arquivo": "dados/votos_historicos_2026_ba.b64",
-      "quantidade_candidatos": 634,
-      "quantidade_candidaturas_com_votos": 799
+      "quantidade_candidatos": 785,
+      "quantidade_candidaturas_com_votos": 1712
     },
     "BR": {
       "arquivo": "dados/votos_historicos_2026_br.b64",
-      "quantidade_candidatos": 6,
-      "quantidade_candidaturas_com_votos": 9
+      "quantidade_candidatos": 11,
+      "quantidade_candidaturas_com_votos": 22
     },
     "CE": {
       "arquivo": "dados/votos_historicos_2026_ce.b64",
-      "quantidade_candidatos": 384,
-      "quantidade_candidaturas_com_votos": 480
+      "quantidade_candidatos": 481,
+      "quantidade_candidaturas_com_votos": 1079
     },
     "DF": {
       "arquivo": "dados/votos_historicos_2026_df.b64",
-      "quantidade_candidatos": 195,
-      "quantidade_candidaturas_com_votos": 195
+      "quantidade_candidatos": 250,
+      "quantidade_candidaturas_com_votos": 439
     },
     "ES": {
       "arquivo": "dados/votos_historicos_2026_es.b64",
-      "quantidade_candidatos": 300,
-      "quantidade_candidaturas_com_votos": 361
+      "quantidade_candidatos": 354,
+      "quantidade_candidaturas_com_votos": 802
     },
     "GO": {
       "arquivo": "dados/votos_historicos_2026_go.b64",
-      "quantidade_candidatos": 464,
-      "quantidade_candidaturas_com_votos": 577
+      "quantidade_candidatos": 556,
+      "quantidade_candidaturas_com_votos": 1197
     },
     "MA": {
       "arquivo": "dados/votos_historicos_2026_ma.b64",
-      "quantidade_candidatos": 327,
-      "quantidade_candidaturas_com_votos": 393
+      "quantidade_candidatos": 407,
+      "quantidade_candidaturas_com_votos": 858
     },
     "MG": {
       "arquivo": "dados/votos_historicos_2026_mg.b64",
-      "quantidade_candidatos": 993,
-      "quantidade_candidaturas_com_votos": 1236
+      "quantidade_candidatos": 1203,
+      "quantidade_candidaturas_com_votos": 2692
     },
     "MS": {
       "arquivo": "dados/votos_historicos_2026_ms.b64",
-      "quantidade_candidatos": 239,
-      "quantidade_candidaturas_com_votos": 304
+      "quantidade_candidatos": 279,
+      "quantidade_candidaturas_com_votos": 657
     },
     "MT": {
       "arquivo": "dados/votos_historicos_2026_mt.b64",
-      "quantidade_candidatos": 242,
-      "quantidade_candidaturas_com_votos": 292
+      "quantidade_candidatos": 295,
+      "quantidade_candidaturas_com_votos": 654
     },
     "PA": {
       "arquivo": "dados/votos_historicos_2026_pa.b64",
-      "quantidade_candidatos": 328,
-      "quantidade_candidaturas_com_votos": 391
+      "quantidade_candidatos": 438,
+      "quantidade_candidaturas_com_votos": 907
     },
     "PB": {
       "arquivo": "dados/votos_historicos_2026_pb.b64",
-      "quantidade_candidatos": 240,
-      "quantidade_candidaturas_com_votos": 296
+      "quantidade_candidatos": 288,
+      "quantidade_candidaturas_com_votos": 669
     },
     "PE": {
       "arquivo": "dados/votos_historicos_2026_pe.b64",
-      "quantidade_candidatos": 503,
-      "quantidade_candidaturas_com_votos": 626
+      "quantidade_candidatos": 620,
+      "quantidade_candidaturas_com_votos": 1352
     },
     "PI": {
       "arquivo": "dados/votos_historicos_2026_pi.b64",
-      "quantidade_candidatos": 174,
-      "quantidade_candidaturas_com_votos": 211
+      "quantidade_candidatos": 214,
+      "quantidade_candidaturas_com_votos": 459
     },
     "PR": {
       "arquivo": "dados/votos_historicos_2026_pr.b64",
-      "quantidade_candidatos": 610,
-      "quantidade_candidaturas_com_votos": 754
+      "quantidade_candidatos": 720,
+      "quantidade_candidaturas_com_votos": 1579
     },
     "RJ": {
       "arquivo": "dados/votos_historicos_2026_rj.b64",
-      "quantidade_candidatos": 1017,
-      "quantidade_candidaturas_com_votos": 1271
+      "quantidade_candidatos": 1246,
+      "quantidade_candidaturas_com_votos": 2795
     },
     "RN": {
       "arquivo": "dados/votos_historicos_2026_rn.b64",
-      "quantidade_candidatos": 150,
-      "quantidade_candidaturas_com_votos": 175
+      "quantidade_candidatos": 191,
+      "quantidade_candidaturas_com_votos": 397
     },
     "RO": {
       "arquivo": "dados/votos_historicos_2026_ro.b64",
-      "quantidade_candidatos": 210,
-      "quantidade_candidaturas_com_votos": 246
+      "quantidade_candidatos": 260,
+      "quantidade_candidaturas_com_votos": 553
     },
     "RR": {
       "arquivo": "dados/votos_historicos_2026_rr.b64",
-      "quantidade_candidatos": 166,
-      "quantidade_candidaturas_com_votos": 208
+      "quantidade_candidatos": 217,
+      "quantidade_candidaturas_com_votos": 435
     },
     "RS": {
       "arquivo": "dados/votos_historicos_2026_rs.b64",
-      "quantidade_candidatos": 621,
-      "quantidade_candidaturas_com_votos": 750
+      "quantidade_candidatos": 729,
+      "quantidade_candidaturas_com_votos": 1658
     },
     "SC": {
       "arquivo": "dados/votos_historicos_2026_sc.b64",
-      "quantidade_candidatos": 381,
-      "quantidade_candidaturas_com_votos": 443
+      "quantidade_candidatos": 463,
+      "quantidade_candidaturas_com_votos": 986
     },
     "SE": {
       "arquivo": "dados/votos_historicos_2026_se.b64",
-      "quantidade_candidatos": 183,
-      "quantidade_candidaturas_com_votos": 232
+      "quantidade_candidatos": 235,
+      "quantidade_candidaturas_com_votos": 519
     },
     "SP": {
       "arquivo": "dados/votos_historicos_2026_sp.b64",
-      "quantidade_candidatos": 1415,
-      "quantidade_candidaturas_com_votos": 1780
+      "quantidade_candidatos": 1709,
+      "quantidade_candidaturas_com_votos": 3866
     },
     "TO": {
       "arquivo": "dados/votos_historicos_2026_to.b64",
-      "quantidade_candidatos": 182,
-      "quantidade_candidaturas_com_votos": 217
+      "quantidade_candidatos": 221,
+      "quantidade_candidaturas_com_votos": 477
     }
   },
   "observacao": "Totais agregados por candidatura e turno; arquivos brutos por município e zona não são publicados."

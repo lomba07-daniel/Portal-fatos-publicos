@@ -35,7 +35,15 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("zips", nargs="+", type=Path)
     parser.add_argument("--saida", type=Path, default=Path("."))
+    parser.add_argument("--acumular", action="store_true", help="preserva anos já publicados e acrescenta/substitui os informados")
     args = parser.parse_args()
+
+    anos_entrada = set()
+    for zip_path in args.zips:
+        match = re.search(r"(20\d{2}|19\d{2})", zip_path.name)
+        if not match:
+            raise SystemExit(f"Ano não identificado no nome: {zip_path}")
+        anos_entrada.add(int(match.group(1)))
 
     manifesto_hist = json.loads(
         (args.saida / "dados/historico_candidaturas_manifesto_2026.json").read_text(encoding="utf-8")
@@ -58,10 +66,24 @@ def main() -> None:
     linhas_aproveitadas = 0
     geracoes: dict[str, str] = {}
 
+    manifesto_anterior_path = args.saida / "dados/votos_historicos_manifesto_2026.json"
+    if args.acumular and manifesto_anterior_path.exists():
+        anterior = json.loads(manifesto_anterior_path.read_text(encoding="utf-8"))
+        anos.extend(int(a) for a in anterior.get("anos_carregados", []) if int(a) not in anos_entrada)
+        geracoes.update({str(a): g for a, g in anterior.get("gerado_pelo_tse_em", {}).items() if int(a) not in anos_entrada})
+        linhas_lidas = int(anterior.get("linhas_oficiais_processadas", 0))
+        linhas_aproveitadas = int(anterior.get("linhas_oficiais_aproveitadas", 0))
+        for referencia in anterior.get("arquivos_por_uf_atual", {}).values():
+            doc = ler_b64(args.saida / referencia["arquivo"])
+            for itens in doc.get("votos", {}).values():
+                for item in itens:
+                    if int(item["ano"]) in anos_entrada:
+                        continue
+                    chave = (item["ano"], item["sq_candidato_eleicao"], item["turno"])
+                    totais[chave] = [int(item["votos_nominais"]), int(item["votos_nominais_validos"])]
+
     for zip_path in args.zips:
         match = re.search(r"(20\d{2}|19\d{2})", zip_path.name)
-        if not match:
-            raise SystemExit(f"Ano não identificado no nome: {zip_path}")
         ano = match.group(1)
         anos.append(int(ano))
         with zipfile.ZipFile(zip_path) as zf:
