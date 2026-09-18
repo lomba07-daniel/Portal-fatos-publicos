@@ -5,7 +5,8 @@ on:
   push:
     branches: [main]
     paths:
-      - 'scripts/atualizar_catalogo_candidatos_tse.py'
+      - 'scripts/baixar_catalogo_candidatos_tse.py'
+      - 'scripts/gerar_catalogo_candidatos_tse_zip.py'
       - '.github/workflows/atualizar-catalogo-candidatos-tse.yml'
   schedule:
     - cron: '23 3,15 * * *'
@@ -30,15 +31,21 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Coletar catálogo oficial do TSE
-        run: python scripts/atualizar_catalogo_candidatos_tse.py
+      - name: Instalar cliente HTTP compatível com o CDN do TSE
+        run: python -m pip install --disable-pip-version-check 'curl_cffi==0.13.0'
+
+      - name: Baixar catálogo oficial do TSE
+        run: python scripts/baixar_catalogo_candidatos_tse.py /tmp/consulta_cand_2026.zip
+
+      - name: Gerar e validar todas as cargas publicadas
+        run: python scripts/gerar_catalogo_candidatos_tse_zip.py /tmp/consulta_cand_2026.zip --saida . --escopo completo
 
       - name: Publicar catálogo quando houver mudança
         run: |
-          if [ -n "$(git status --porcelain -- dados/candidatos_2026.json)" ]; then
+          if [ -n "$(git status --porcelain -- dados/candidatos_*.b64 dados/candidatos_manifesto_2026.json)" ]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add dados/candidatos_2026.json
-            git commit -m "Atualiza catálogo oficial de candidatos 2026"
+            git add dados/candidatos_*.b64 dados/candidatos_manifesto_2026.json
+            git commit -m "Atualiza cargas oficiais do catálogo TSE 2026"
             git push
           fi

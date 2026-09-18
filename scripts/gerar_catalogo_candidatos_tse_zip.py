@@ -154,23 +154,35 @@ def main() -> None:
     )
     args = parser.parse_args()
 
+    manifesto_anterior_path = args.saida / "dados/candidatos_manifesto_2026.json"
+    manifesto_anterior = {}
+    if manifesto_anterior_path.exists():
+        manifesto_anterior = json.loads(manifesto_anterior_path.read_text(encoding="utf-8"))
+
     linhas, arquivo_origem, gerado = ler_csv_oficial(args.zip)
     normalizados = [normalizar(linha) for linha in linhas]
     por_cargo: dict[str, list[dict[str, str]]] = defaultdict(list)
     for candidato in normalizados:
         por_cargo[candidato["cargo"]].append(candidato)
 
-    esperados = {
-        "Presidente": 14,
-        "Governador": 201,
-        "Senador": 319,
-        "Deputado Federal": 7801,
-        "Deputado Estadual": 11292,
-        "Deputado Distrital": 433,
+    minimos_seguranca = {
+        "Presidente": 5,
+        "Governador": 100,
+        "Senador": 150,
+        "Deputado Federal": 4000,
+        "Deputado Estadual": 6000,
+        "Deputado Distrital": 200,
     }
-    for cargo, minimo in esperados.items():
-        if len(por_cargo[cargo]) != minimo:
-            raise SystemExit(f"Validação falhou para {cargo}: {len(por_cargo[cargo])}; esperado: {minimo}.")
+    contagens_anteriores = manifesto_anterior.get("por_cargo", {})
+    for cargo, minimo in minimos_seguranca.items():
+        atual = len(por_cargo[cargo])
+        if atual < minimo:
+            raise SystemExit(f"Validação falhou para {cargo}: apenas {atual}; mínimo seguro: {minimo}.")
+        anterior = int(contagens_anteriores.get(cargo, 0) or 0)
+        if anterior and atual < anterior * 0.90:
+            raise SystemExit(
+                f"Validação falhou para {cargo}: queda anormal de {anterior} para {atual} (>10%)."
+            )
 
     dados = args.saida / "dados"
     saidas: list[Path] = []
@@ -224,6 +236,11 @@ def main() -> None:
         "gerado_pelo_tse_em": gerado,
         "quantidade_publicada": sum(contagens.values()),
         "por_cargo": {cargo: contagens[cargo] for cargo in ORDEM_CARGOS if cargo in contagens},
+        "variacao_desde_carga_anterior": {
+            cargo: contagens[cargo] - int(contagens_anteriores.get(cargo, 0) or 0)
+            for cargo in ORDEM_CARGOS
+            if cargo in contagens and cargo in contagens_anteriores
+        },
         "cargas_iniciais": cargas_iniciais,
         "cargas_por_cargo": cargas_por_cargo,
         "estrategia": "Cargas iniciais compactas e candidaturas legislativas carregadas sob demanda por cargo e UF.",
