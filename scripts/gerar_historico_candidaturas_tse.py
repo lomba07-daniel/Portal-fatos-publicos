@@ -72,6 +72,7 @@ def main() -> None:
         if not atual or atual not in ids_publicados:
             continue
         item = {
+            "sq_candidato_eleicao": txt(linha.get("SQ_CANDIDATO")),
             "ano": txt(linha.get("ANO_ELEICAO")),
             "eleicao": txt(linha.get("DS_ELEICAO")),
             "data_eleicao": txt(linha.get("DT_ELEICAO"))[:10],
