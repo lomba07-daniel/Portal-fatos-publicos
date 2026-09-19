@@ -15,13 +15,13 @@
     "2020": "06/01/2026 16:44:43",
     "2022": "18/09/2026 03:16:12",
     "2024": "18/09/2026 02:16:40",
-    "2026": "18/09/2026 16:31:18"
+    "2026": "18/09/2026 19:30:33"
   },
-  "quantidade_candidatos_com_bens": 13210,
-  "quantidade_declaracoes": 26963,
+  "quantidade_candidatos_com_bens": 13208,
+  "quantidade_declaracoes": 26959,
   "linhas_oficiais_processadas": 6334210,
-  "linhas_oficiais_aproveitadas": 291890,
-  "valor_total_centavos": 8370445737958,
+  "linhas_oficiais_aproveitadas": 291872,
+  "valor_total_centavos": 8370056382064,
   "associacoes_historicas_ambiguas_excluidas": 361,
   "arquivos_por_uf_atual": {
     "AC": {
@@ -156,8 +156,8 @@
     },
     "SP": {
       "arquivo": "dados/patrimonio_historico_2026_sp.b64",
-      "quantidade_candidatos": 1800,
-      "quantidade_declaracoes": 3693
+      "quantidade_candidatos": 1798,
+      "quantidade_declaracoes": 3689
     },
     "TO": {
       "arquivo": "dados/patrimonio_historico_2026_to.b64",
