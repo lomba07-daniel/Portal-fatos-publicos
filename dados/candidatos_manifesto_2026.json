@@ -3,7 +3,7 @@
   "fonte": "Tribunal Superior Eleitoral — Dados Abertos",
   "fonte_url": "https://dadosabertos.tse.jus.br/dataset/candidatos-2026",
   "arquivo_origem": "consulta_cand_2026_BRASIL.csv",
-  "gerado_pelo_tse_em": "18/09/2026 08:30:38",
+  "gerado_pelo_tse_em": "18/09/2026 19:31:29",
   "quantidade_publicada": 20060,
   "por_cargo": {
     "Presidente": 14,
