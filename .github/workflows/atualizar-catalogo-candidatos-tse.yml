@@ -15,7 +15,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: atualizar-catalogo-candidatos-tse
+  group: publicar-main-portal
   cancel-in-progress: false
 
 jobs:
