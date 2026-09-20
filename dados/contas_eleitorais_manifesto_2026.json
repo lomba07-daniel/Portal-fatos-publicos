@@ -2,19 +2,19 @@
   "ano": 2026,
   "fonte": "Tribunal Superior Eleitoral — Prestação de contas eleitorais de candidatos",
   "fonte_url": "https://dadosabertos.tse.jus.br/dataset/prestacao-de-contas-eleitorais-2026",
-  "gerado_pelo_tse_em": "19/09/2026 04:05:31",
+  "gerado_pelo_tse_em": "20/09/2026 04:05:48",
   "quantidade_candidatos_no_catalogo": 20060,
-  "quantidade_candidatos_com_movimentacao": 19033,
+  "quantidade_candidatos_com_movimentacao": 19040,
   "linhas_oficiais_processadas": {
-    "receitas": 118115,
-    "contratadas": 735740,
-    "pagas": 370817
+    "receitas": 119653,
+    "contratadas": 739569,
+    "pagas": 376125
   },
   "pagamentos_sem_vinculo_excluidos": 0,
   "totais_centavos": {
-    "receitas_centavos": 566284720374,
-    "despesas_contratadas_centavos": 363929439185,
-    "despesas_pagas_centavos": 205763689587
+    "receitas_centavos": 569817127164,
+    "despesas_contratadas_centavos": 365319831727,
+    "despesas_pagas_centavos": 208076554255
   },
   "arquivos_por_uf_atual": {
     "AC": {
@@ -23,7 +23,7 @@
     },
     "AL": {
       "arquivo": "dados/contas_eleitorais_2026_al.b64",
-      "quantidade_candidatos": 239
+      "quantidade_candidatos": 240
     },
     "AM": {
       "arquivo": "dados/contas_eleitorais_2026_am.b64",
@@ -71,11 +71,11 @@
     },
     "MT": {
       "arquivo": "dados/contas_eleitorais_2026_mt.b64",
-      "quantidade_candidatos": 410
+      "quantidade_candidatos": 411
     },
     "PA": {
       "arquivo": "dados/contas_eleitorais_2026_pa.b64",
-      "quantidade_candidatos": 639
+      "quantidade_candidatos": 640
     },
     "PB": {
       "arquivo": "dados/contas_eleitorais_2026_pb.b64",
@@ -91,11 +91,11 @@
     },
     "PR": {
       "arquivo": "dados/contas_eleitorais_2026_pr.b64",
-      "quantidade_candidatos": 1020
+      "quantidade_candidatos": 1021
     },
     "RJ": {
       "arquivo": "dados/contas_eleitorais_2026_rj.b64",
-      "quantidade_candidatos": 1887
+      "quantidade_candidatos": 1890
     },
     "RN": {
       "arquivo": "dados/contas_eleitorais_2026_rn.b64",
