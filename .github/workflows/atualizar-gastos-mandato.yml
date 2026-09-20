@@ -14,7 +14,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: publicar-main-portal
+  group: atualizar-gastos-mandato
   cancel-in-progress: false
 
 jobs:
@@ -49,4 +49,5 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add dados/gastos_mandato_senado.json
           git commit -m "Atualiza gastos oficiais do mandato no Senado"
+          git pull --rebase origin main
           git push

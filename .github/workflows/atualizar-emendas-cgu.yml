@@ -15,7 +15,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: publicar-main-portal
+  group: atualizar-emendas-cgu
   cancel-in-progress: false
 
 jobs:
@@ -55,5 +55,6 @@ jobs:
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add dados/emendas_parlamentares.json index.html
             git commit -m "Atualiza emendas oficiais e integra ao portal"
+            git pull --rebase origin main
             git push
           fi
