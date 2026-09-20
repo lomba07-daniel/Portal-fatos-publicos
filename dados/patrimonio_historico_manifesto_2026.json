@@ -1,5 +1,10 @@
 {
   "anos_carregados": [
+    2006,
+    2008,
+    2010,
+    2012,
+    2014,
     2016,
     2018,
     2020,
@@ -10,159 +15,164 @@
   "fonte": "Tribunal Superior Eleitoral — Bens de candidatos",
   "fonte_url": "https://dadosabertos.tse.jus.br/",
   "gerado_pelo_tse_em": {
+    "2006": "27/08/2021 15:30:26",
+    "2008": "19/08/2021 18:49:01",
+    "2010": "19/04/2021 13:16:05",
+    "2012": "23/07/2021 17:30:58",
+    "2014": "23/06/2021 18:50:41",
     "2016": "18/02/2021 12:06:52",
     "2018": "13/11/2024 10:55:11",
     "2020": "06/01/2026 16:44:43",
-    "2022": "19/09/2026 03:16:28",
-    "2024": "19/09/2026 02:15:43",
-    "2026": "19/09/2026 19:31:18"
+    "2022": "20/09/2026 03:16:30",
+    "2024": "20/09/2026 02:16:54",
+    "2026": "20/09/2026 05:31:08"
   },
-  "quantidade_candidatos_com_bens": 13208,
-  "quantidade_declaracoes": 26959,
-  "linhas_oficiais_processadas": 6334212,
-  "linhas_oficiais_aproveitadas": 291872,
-  "valor_total_centavos": 8370066382064,
+  "quantidade_candidatos_com_bens": 13747,
+  "quantidade_declaracoes": 36005,
+  "linhas_oficiais_processadas": 10201522,
+  "linhas_oficiais_aproveitadas": 398558,
+  "valor_total_centavos": 10116437600096,
   "associacoes_historicas_ambiguas_excluidas": 361,
   "arquivos_por_uf_atual": {
     "AC": {
       "arquivo": "dados/patrimonio_historico_2026_ac.b64",
-      "quantidade_candidatos": 225,
-      "quantidade_declaracoes": 396
+      "quantidade_candidatos": 245,
+      "quantidade_declaracoes": 583
     },
     "AL": {
       "arquivo": "dados/patrimonio_historico_2026_al.b64",
-      "quantidade_candidatos": 152,
-      "quantidade_declaracoes": 339
+      "quantidade_candidatos": 161,
+      "quantidade_declaracoes": 481
     },
     "AM": {
       "arquivo": "dados/patrimonio_historico_2026_am.b64",
-      "quantidade_candidatos": 305,
-      "quantidade_declaracoes": 620
+      "quantidade_candidatos": 314,
+      "quantidade_declaracoes": 826
     },
     "AP": {
       "arquivo": "dados/patrimonio_historico_2026_ap.b64",
-      "quantidade_candidatos": 176,
-      "quantidade_declaracoes": 283
+      "quantidade_candidatos": 193,
+      "quantidade_declaracoes": 431
     },
     "BA": {
       "arquivo": "dados/patrimonio_historico_2026_ba.b64",
-      "quantidade_candidatos": 767,
-      "quantidade_declaracoes": 1409
+      "quantidade_candidatos": 810,
+      "quantidade_declaracoes": 1983
     },
     "BR": {
       "arquivo": "dados/patrimonio_historico_2026_br.b64",
-      "quantidade_candidatos": 9,
-      "quantidade_declaracoes": 16
+      "quantidade_candidatos": 11,
+      "quantidade_declaracoes": 30
     },
     "CE": {
       "arquivo": "dados/patrimonio_historico_2026_ce.b64",
-      "quantidade_candidatos": 448,
-      "quantidade_declaracoes": 936
+      "quantidade_candidatos": 469,
+      "quantidade_declaracoes": 1309
     },
     "DF": {
       "arquivo": "dados/patrimonio_historico_2026_df.b64",
-      "quantidade_candidatos": 340,
-      "quantidade_declaracoes": 507
+      "quantidade_candidatos": 356,
+      "quantidade_declaracoes": 684
     },
     "ES": {
       "arquivo": "dados/patrimonio_historico_2026_es.b64",
-      "quantidade_candidatos": 349,
-      "quantidade_declaracoes": 787
+      "quantidade_candidatos": 362,
+      "quantidade_declaracoes": 1044
     },
     "GO": {
       "arquivo": "dados/patrimonio_historico_2026_go.b64",
-      "quantidade_candidatos": 615,
-      "quantidade_declaracoes": 1315
+      "quantidade_candidatos": 629,
+      "quantidade_declaracoes": 1712
     },
     "MA": {
       "arquivo": "dados/patrimonio_historico_2026_ma.b64",
-      "quantidade_candidatos": 430,
-      "quantidade_declaracoes": 899
+      "quantidade_candidatos": 442,
+      "quantidade_declaracoes": 1196
     },
     "MG": {
       "arquivo": "dados/patrimonio_historico_2026_mg.b64",
-      "quantidade_candidatos": 1220,
-      "quantidade_declaracoes": 2649
+      "quantidade_candidatos": 1259,
+      "quantidade_declaracoes": 3447
     },
     "MS": {
       "arquivo": "dados/patrimonio_historico_2026_ms.b64",
-      "quantidade_candidatos": 266,
-      "quantidade_declaracoes": 570
+      "quantidade_candidatos": 273,
+      "quantidade_declaracoes": 778
     },
     "MT": {
       "arquivo": "dados/patrimonio_historico_2026_mt.b64",
-      "quantidade_candidatos": 310,
-      "quantidade_declaracoes": 671
+      "quantidade_candidatos": 321,
+      "quantidade_declaracoes": 881
     },
     "PA": {
       "arquivo": "dados/patrimonio_historico_2026_pa.b64",
-      "quantidade_candidatos": 401,
-      "quantidade_declaracoes": 842
+      "quantidade_candidatos": 428,
+      "quantidade_declaracoes": 1154
     },
     "PB": {
       "arquivo": "dados/patrimonio_historico_2026_pb.b64",
-      "quantidade_candidatos": 282,
-      "quantidade_declaracoes": 621
+      "quantidade_candidatos": 293,
+      "quantidade_declaracoes": 858
     },
     "PE": {
       "arquivo": "dados/patrimonio_historico_2026_pe.b64",
-      "quantidade_candidatos": 545,
-      "quantidade_declaracoes": 1037
+      "quantidade_candidatos": 577,
+      "quantidade_declaracoes": 1369
     },
     "PI": {
       "arquivo": "dados/patrimonio_historico_2026_pi.b64",
-      "quantidade_candidatos": 220,
-      "quantidade_declaracoes": 392
+      "quantidade_candidatos": 230,
+      "quantidade_declaracoes": 558
     },
     "PR": {
       "arquivo": "dados/patrimonio_historico_2026_pr.b64",
-      "quantidade_candidatos": 843,
-      "quantidade_declaracoes": 1851
+      "quantidade_candidatos": 856,
+      "quantidade_declaracoes": 2364
     },
     "RJ": {
       "arquivo": "dados/patrimonio_historico_2026_rj.b64",
-      "quantidade_candidatos": 1042,
-      "quantidade_declaracoes": 2076
+      "quantidade_candidatos": 1114,
+      "quantidade_declaracoes": 2790
     },
     "RN": {
       "arquivo": "dados/patrimonio_historico_2026_rn.b64",
-      "quantidade_candidatos": 197,
-      "quantidade_declaracoes": 358
+      "quantidade_candidatos": 206,
+      "quantidade_declaracoes": 457
     },
     "RO": {
       "arquivo": "dados/patrimonio_historico_2026_ro.b64",
-      "quantidade_candidatos": 302,
-      "quantidade_declaracoes": 608
+      "quantidade_candidatos": 308,
+      "quantidade_declaracoes": 795
     },
     "RR": {
       "arquivo": "dados/patrimonio_historico_2026_rr.b64",
-      "quantidade_candidatos": 226,
-      "quantidade_declaracoes": 410
+      "quantidade_candidatos": 241,
+      "quantidade_declaracoes": 568
     },
     "RS": {
       "arquivo": "dados/patrimonio_historico_2026_rs.b64",
-      "quantidade_candidatos": 739,
-      "quantidade_declaracoes": 1513
+      "quantidade_candidatos": 764,
+      "quantidade_declaracoes": 2011
     },
     "SC": {
       "arquivo": "dados/patrimonio_historico_2026_sc.b64",
-      "quantidade_candidatos": 483,
-      "quantidade_declaracoes": 1054
+      "quantidade_candidatos": 498,
+      "quantidade_declaracoes": 1402
     },
     "SE": {
       "arquivo": "dados/patrimonio_historico_2026_se.b64",
-      "quantidade_candidatos": 263,
-      "quantidade_declaracoes": 517
+      "quantidade_candidatos": 277,
+      "quantidade_declaracoes": 674
     },
     "SP": {
       "arquivo": "dados/patrimonio_historico_2026_sp.b64",
-      "quantidade_candidatos": 1798,
-      "quantidade_declaracoes": 3689
+      "quantidade_candidatos": 1847,
+      "quantidade_declaracoes": 4837
     },
     "TO": {
       "arquivo": "dados/patrimonio_historico_2026_to.b64",
-      "quantidade_candidatos": 255,
-      "quantidade_declaracoes": 594
+      "quantidade_candidatos": 263,
+      "quantidade_declaracoes": 783
     }
   },
   "observacao": "Valores nominais declarados ao TSE. Variação entre eleições não representa, isoladamente, renda, ganho real ou irregularidade. Descrições livres dos bens não são publicadas para reduzir exposição de dados pessoais."
