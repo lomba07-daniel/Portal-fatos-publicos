@@ -1,0 +1,29 @@
+{
+  "status": "aprovado",
+  "escopo": "Patrimônio eleitoral agregado de 2006 a 2026",
+  "quantidade_particoes": 28,
+  "quantidade_candidatos": 13747,
+  "quantidade_declaracoes": 36005,
+  "declaracoes_por_ano": {
+    "2006": 1370,
+    "2008": 1890,
+    "2010": 1397,
+    "2012": 2484,
+    "2014": 1905,
+    "2016": 3299,
+    "2018": 2903,
+    "2020": 4364,
+    "2022": 4608,
+    "2024": 5347,
+    "2026": 6438
+  },
+  "testes": {
+    "particao_corresponde_uf": true,
+    "anos_consistentes": true,
+    "sem_ano_duplicado_por_candidato": true,
+    "total_igual_soma_categorias": true,
+    "contagens_iguais_manifesto": true
+  },
+  "erros": [],
+  "observacao": "A validação comprova consistência interna e de vínculo; não certifica a veracidade econômica dos valores declarados pelos candidatos."
+}

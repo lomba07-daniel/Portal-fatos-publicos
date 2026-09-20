@@ -1,0 +1,134 @@
+{
+  "ano": 2026,
+  "fonte": "Tribunal Superior Eleitoral — Prestação de contas eleitorais de candidatos",
+  "fonte_url": "https://dadosabertos.tse.jus.br/dataset/prestacao-de-contas-eleitorais-2026",
+  "gerado_pelo_tse_em": "19/09/2026 04:05:31",
+  "quantidade_candidatos_no_catalogo": 20060,
+  "quantidade_candidatos_com_movimentacao": 19033,
+  "linhas_oficiais_processadas": {
+    "receitas": 118115,
+    "contratadas": 735740,
+    "pagas": 370817
+  },
+  "pagamentos_sem_vinculo_excluidos": 0,
+  "totais_centavos": {
+    "receitas_centavos": 566284720374,
+    "despesas_contratadas_centavos": 363929439185,
+    "despesas_pagas_centavos": 205763689587
+  },
+  "arquivos_por_uf_atual": {
+    "AC": {
+      "arquivo": "dados/contas_eleitorais_2026_ac.b64",
+      "quantidade_candidatos": 326
+    },
+    "AL": {
+      "arquivo": "dados/contas_eleitorais_2026_al.b64",
+      "quantidade_candidatos": 239
+    },
+    "AM": {
+      "arquivo": "dados/contas_eleitorais_2026_am.b64",
+      "quantidade_candidatos": 438
+    },
+    "AP": {
+      "arquivo": "dados/contas_eleitorais_2026_ap.b64",
+      "quantidade_candidatos": 288
+    },
+    "BA": {
+      "arquivo": "dados/contas_eleitorais_2026_ba.b64",
+      "quantidade_candidatos": 1144
+    },
+    "BR": {
+      "arquivo": "dados/contas_eleitorais_2026_br.b64",
+      "quantidade_candidatos": 13
+    },
+    "CE": {
+      "arquivo": "dados/contas_eleitorais_2026_ce.b64",
+      "quantidade_candidatos": 661
+    },
+    "DF": {
+      "arquivo": "dados/contas_eleitorais_2026_df.b64",
+      "quantidade_candidatos": 598
+    },
+    "ES": {
+      "arquivo": "dados/contas_eleitorais_2026_es.b64",
+      "quantidade_candidatos": 558
+    },
+    "GO": {
+      "arquivo": "dados/contas_eleitorais_2026_go.b64",
+      "quantidade_candidatos": 818
+    },
+    "MA": {
+      "arquivo": "dados/contas_eleitorais_2026_ma.b64",
+      "quantidade_candidatos": 546
+    },
+    "MG": {
+      "arquivo": "dados/contas_eleitorais_2026_mg.b64",
+      "quantidade_candidatos": 1666
+    },
+    "MS": {
+      "arquivo": "dados/contas_eleitorais_2026_ms.b64",
+      "quantidade_candidatos": 388
+    },
+    "MT": {
+      "arquivo": "dados/contas_eleitorais_2026_mt.b64",
+      "quantidade_candidatos": 410
+    },
+    "PA": {
+      "arquivo": "dados/contas_eleitorais_2026_pa.b64",
+      "quantidade_candidatos": 639
+    },
+    "PB": {
+      "arquivo": "dados/contas_eleitorais_2026_pb.b64",
+      "quantidade_candidatos": 399
+    },
+    "PE": {
+      "arquivo": "dados/contas_eleitorais_2026_pe.b64",
+      "quantidade_candidatos": 871
+    },
+    "PI": {
+      "arquivo": "dados/contas_eleitorais_2026_pi.b64",
+      "quantidade_candidatos": 335
+    },
+    "PR": {
+      "arquivo": "dados/contas_eleitorais_2026_pr.b64",
+      "quantidade_candidatos": 1020
+    },
+    "RJ": {
+      "arquivo": "dados/contas_eleitorais_2026_rj.b64",
+      "quantidade_candidatos": 1887
+    },
+    "RN": {
+      "arquivo": "dados/contas_eleitorais_2026_rn.b64",
+      "quantidade_candidatos": 281
+    },
+    "RO": {
+      "arquivo": "dados/contas_eleitorais_2026_ro.b64",
+      "quantidade_candidatos": 397
+    },
+    "RR": {
+      "arquivo": "dados/contas_eleitorais_2026_rr.b64",
+      "quantidade_candidatos": 366
+    },
+    "RS": {
+      "arquivo": "dados/contas_eleitorais_2026_rs.b64",
+      "quantidade_candidatos": 994
+    },
+    "SC": {
+      "arquivo": "dados/contas_eleitorais_2026_sc.b64",
+      "quantidade_candidatos": 654
+    },
+    "SE": {
+      "arquivo": "dados/contas_eleitorais_2026_se.b64",
+      "quantidade_candidatos": 363
+    },
+    "SP": {
+      "arquivo": "dados/contas_eleitorais_2026_sp.b64",
+      "quantidade_candidatos": 2412
+    },
+    "TO": {
+      "arquivo": "dados/contas_eleitorais_2026_to.b64",
+      "quantidade_candidatos": 322
+    }
+  },
+  "observacao": "Valores declarados ao TSE e sujeitos a atualização. A ausência de movimentação não significa irregularidade. Nomes, documentos, descrições livres, doadores e fornecedores não são publicados nesta carga agregada."
+}

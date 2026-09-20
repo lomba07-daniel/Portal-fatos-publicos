@@ -38,12 +38,14 @@ jobs:
           done
       - name: Gerar e validar cargas patrimoniais
         run: python scripts/gerar_patrimonio_historico_tse.py /tmp/bem_candidato_2006.zip /tmp/bem_candidato_2008.zip /tmp/bem_candidato_2010.zip /tmp/bem_candidato_2012.zip /tmp/bem_candidato_2014.zip /tmp/bem_candidato_2016.zip /tmp/bem_candidato_2018.zip /tmp/bem_candidato_2020.zip /tmp/bem_candidato_2022.zip /tmp/bem_candidato_2024.zip /tmp/bem_candidato_2026.zip --saida .
+      - name: Validar série patrimonial completa
+        run: python scripts/validar_patrimonio_historico.py
       - name: Publicar quando houver mudança
         run: |
-          if [ -n "$(git status --porcelain -- dados/patrimonio_historico_2026_*.b64 dados/patrimonio_historico_manifesto_2026.json)" ]; then
+          if [ -n "$(git status --porcelain -- dados/patrimonio_historico_2026_*.b64 dados/patrimonio_historico_manifesto_2026.json dados/validacao_patrimonio_historico_2026.json)" ]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add dados/patrimonio_historico_2026_*.b64 dados/patrimonio_historico_manifesto_2026.json
+            git add dados/patrimonio_historico_2026_*.b64 dados/patrimonio_historico_manifesto_2026.json dados/validacao_patrimonio_historico_2026.json
             git commit -m "Atualiza patrimônio eleitoral oficial do TSE"
             git push
           fi
