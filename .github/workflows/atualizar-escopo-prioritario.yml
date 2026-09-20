@@ -1,0 +1,45 @@
+name: Atualizar escopo prioritário 2026
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/gerar_escopo_prioritario_2026.py'
+      - 'dados/candidatos_manifesto_2026.json'
+      - 'dados/historico_candidaturas_manifesto_2026.json'
+      - 'dados/votos_historicos_manifesto_2026.json'
+      - 'dados/patrimonio_historico_manifesto_2026.json'
+      - 'dados/contas_eleitorais_manifesto_2026.json'
+      - '.github/workflows/atualizar-escopo-prioritario.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: atualizar-escopo-prioritario
+  cancel-in-progress: false
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v5
+      - name: Configurar Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Gerar e validar escopo prioritário
+        run: python scripts/gerar_escopo_prioritario_2026.py
+      - name: Publicar quando houver mudança
+        run: |
+          if [ -n "$(git status --porcelain -- dados/escopo_prioritario_2026.b64 dados/escopo_prioritario_manifesto_2026.json)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add dados/escopo_prioritario_2026.b64 dados/escopo_prioritario_manifesto_2026.json
+            git commit -m "Atualiza escopo prioritário de 2026"
+            git pull --rebase origin main
+            git push
+          fi

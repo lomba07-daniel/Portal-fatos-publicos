@@ -1,0 +1,53 @@
+{
+  "eleicao": 2026,
+  "data_alvo": "04/10/2026",
+  "gerado_a_partir_do_catalogo_tse_em": "20/09/2026 08:30:57",
+  "quantidade_prioritaria": 2940,
+  "quantidade_perfil_completo": 215,
+  "quantidade_perfil_regional": 2725,
+  "quantidade_catalogo_nacional": 20060,
+  "por_cargo": {
+    "Deputado Estadual": 1573,
+    "Deputado Federal": 1117,
+    "Governador": 201,
+    "Presidente": 14,
+    "Senador": 35
+  },
+  "por_uf_legislativa": {
+    "PR": 1054,
+    "RS": 1013,
+    "SC": 658
+  },
+  "cobertura": {
+    "historico_eleitoral": {
+      "quantidade": 2751,
+      "percentual": 93.57
+    },
+    "votos_historicos": {
+      "quantidade": 2133,
+      "percentual": 72.55
+    },
+    "patrimonio": {
+      "quantidade": 2277,
+      "percentual": 77.45
+    },
+    "contas_eleitorais_2026": {
+      "quantidade": 2854,
+      "percentual": 97.07
+    },
+    "mandatos": {
+      "quantidade": 0,
+      "percentual": 0.0
+    },
+    "atuacao_publica": {
+      "quantidade": 0,
+      "percentual": 0.0
+    },
+    "plano_governo": {
+      "quantidade": 0,
+      "percentual": 0.0
+    }
+  },
+  "arquivo": "dados/escopo_prioritario_2026.b64",
+  "observacao": "O escopo orienta prioridade de enriquecimento; não remove candidaturas do catálogo nacional."
+}
