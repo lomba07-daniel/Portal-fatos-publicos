@@ -3,14 +3,14 @@
   "fonte": "Tribunal Superior Eleitoral — Dados Abertos",
   "fonte_url": "https://dadosabertos.tse.jus.br/dataset/candidatos-2026",
   "arquivo_origem": "consulta_cand_2026_BRASIL.csv",
-  "gerado_pelo_tse_em": "20/09/2026 08:30:57",
-  "quantidade_publicada": 20060,
+  "gerado_pelo_tse_em": "20/09/2026 19:30:42",
+  "quantidade_publicada": 20061,
   "por_cargo": {
     "Presidente": 14,
     "Governador": 201,
     "Senador": 319,
     "Deputado Federal": 7801,
-    "Deputado Estadual": 11292,
+    "Deputado Estadual": 11293,
     "Deputado Distrital": 433
   },
   "variacao_desde_carga_anterior": {
@@ -18,7 +18,7 @@
     "Governador": 0,
     "Senador": 0,
     "Deputado Federal": 0,
-    "Deputado Estadual": 0,
+    "Deputado Estadual": 1,
     "Deputado Distrital": 0
   },
   "cargas_iniciais": [
@@ -241,7 +241,7 @@
       },
       "SP": {
         "arquivo": "dados/candidatos_deputado_estadual_2026_sp.b64",
-        "quantidade": 1430
+        "quantidade": 1431
       },
       "TO": {
         "arquivo": "dados/candidatos_deputado_estadual_2026_to.b64",
