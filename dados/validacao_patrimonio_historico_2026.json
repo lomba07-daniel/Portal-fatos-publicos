@@ -3,7 +3,7 @@
   "escopo": "Patrimônio eleitoral agregado de 2006 a 2026",
   "quantidade_particoes": 28,
   "quantidade_candidatos": 13748,
-  "quantidade_declaracoes": 36008,
+  "quantidade_declaracoes": 36009,
   "declaracoes_por_ano": {
     "2006": 1370,
     "2008": 1890,
@@ -14,8 +14,8 @@
     "2018": 2903,
     "2020": 4364,
     "2022": 4608,
-    "2024": 5347,
-    "2026": 6441
+    "2024": 5346,
+    "2026": 6443
   },
   "testes": {
     "particao_corresponde_uf": true,
