@@ -1,11 +1,11 @@
 {
   "eleicao": 2026,
   "data_alvo": "04/10/2026",
-  "gerado_a_partir_do_catalogo_tse_em": "20/09/2026 08:30:57",
+  "gerado_a_partir_do_catalogo_tse_em": "24/09/2026 19:31:08",
   "quantidade_prioritaria": 2940,
   "quantidade_perfil_completo": 215,
   "quantidade_perfil_regional": 2725,
-  "quantidade_catalogo_nacional": 20060,
+  "quantidade_catalogo_nacional": 20062,
   "por_cargo": {
     "Deputado Estadual": 1573,
     "Deputado Federal": 1117,
@@ -28,16 +28,16 @@
       "percentual": 72.55
     },
     "patrimonio": {
-      "quantidade": 2277,
-      "percentual": 77.45
+      "quantidade": 2276,
+      "percentual": 77.41
     },
     "contas_eleitorais_2026": {
-      "quantidade": 2854,
-      "percentual": 97.07
+      "quantidade": 2856,
+      "percentual": 97.14
     },
     "mandatos": {
-      "quantidade": 0,
-      "percentual": 0.0
+      "quantidade": 78,
+      "percentual": 2.65
     },
     "atuacao_publica": {
       "quantidade": 0,

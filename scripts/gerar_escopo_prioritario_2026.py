@@ -59,6 +59,8 @@ def main() -> None:
     votos_ids, votos_n = ids_e_contagens("votos_historicos_manifesto_2026.json", "votos")
     patrimonio_ids, patrimonio_n = ids_e_contagens("patrimonio_historico_manifesto_2026.json", "patrimonios")
     contas_ids, _ = ids_e_contagens("contas_eleitorais_manifesto_2026.json", "contas")
+    mandatos_path = RAIZ / "dados/mandatos_federais_atuais_2026.b64"
+    mandatos_ids = set(ler_b64(mandatos_path).get("mandatos", {})) if mandatos_path.exists() else set()
 
     selecionados = []
     for cid, c in catalogo.items():
@@ -85,7 +87,7 @@ def main() -> None:
                 "patrimonio": cid in patrimonio_ids,
                 "quantidade_declaracoes_patrimoniais": patrimonio_n.get(cid, 0),
                 "contas_eleitorais_2026": cid in contas_ids,
-                "mandatos": False,
+                "mandatos": cid in mandatos_ids,
                 "atuacao_publica": False,
                 "plano_governo": False,
             },
