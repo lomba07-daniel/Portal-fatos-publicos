@@ -1,0 +1,28 @@
+{
+  "eleicao": 2026,
+  "escopo": "mandatos_federais_historicos",
+  "atualizado_em_utc": "2026-09-25T19:32:00+00:00",
+  "legislaturas_consultadas": [
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57
+  ],
+  "criterio_vinculo": "Nome civil exatamente igual após normalização e único no escopo; Senado também exige UF e registro de exercício.",
+  "fontes": {
+    "camara": "https://dadosabertos.camara.leg.br/arquivos/deputados/json/deputados.json",
+    "senado": "https://legis.senado.leg.br/dadosabertos/senador/lista/legislatura/<legislatura>.json"
+  },
+  "quantidade_candidatos_com_historico": 176,
+  "quantidade_registros_de_mandato": 195,
+  "quantidade_ambiguos": 0,
+  "por_casa": {
+    "Câmara dos Deputados": 167,
+    "Senado Federal": 28
+  },
+  "arquivo": "dados/mandatos_federais_historicos_2026.b64",
+  "observacao": "O histórico registra exercício parlamentar oficial; candidatura, eleição ou suplência sem exercício não bastam para criar vínculo."
+}

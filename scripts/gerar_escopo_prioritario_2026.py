@@ -59,8 +59,11 @@ def main() -> None:
     votos_ids, votos_n = ids_e_contagens("votos_historicos_manifesto_2026.json", "votos")
     patrimonio_ids, patrimonio_n = ids_e_contagens("patrimonio_historico_manifesto_2026.json", "patrimonios")
     contas_ids, _ = ids_e_contagens("contas_eleitorais_manifesto_2026.json", "contas")
-    mandatos_path = RAIZ / "dados/mandatos_federais_atuais_2026.b64"
-    mandatos_ids = set(ler_b64(mandatos_path).get("mandatos", {})) if mandatos_path.exists() else set()
+    mandatos_ids: set[str] = set()
+    for nome_base in ("mandatos_federais_atuais_2026.b64", "mandatos_federais_historicos_2026.b64"):
+        mandatos_path = RAIZ / f"dados/{nome_base}"
+        if mandatos_path.exists():
+            mandatos_ids.update(ler_b64(mandatos_path).get("mandatos", {}))
 
     selecionados = []
     for cid, c in catalogo.items():
