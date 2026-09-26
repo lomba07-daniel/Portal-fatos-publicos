@@ -60,7 +60,7 @@ def main() -> None:
     patrimonio_ids, patrimonio_n = ids_e_contagens("patrimonio_historico_manifesto_2026.json", "patrimonios")
     contas_ids, _ = ids_e_contagens("contas_eleitorais_manifesto_2026.json", "contas")
     mandatos_ids: set[str] = set()
-    for nome_base in ("mandatos_federais_atuais_2026.b64", "mandatos_federais_historicos_2026.b64", "mandatos_estaduais_atuais_2026.b64"):
+    for nome_base in ("mandatos_federais_atuais_2026.b64", "mandatos_federais_historicos_2026.b64", "mandatos_estaduais_atuais_2026.b64", "mandatos_estaduais_historicos_2026.b64"):
         mandatos_path = RAIZ / f"dados/{nome_base}"
         if mandatos_path.exists():
             mandatos_ids.update(ler_b64(mandatos_path).get("mandatos", {}))
