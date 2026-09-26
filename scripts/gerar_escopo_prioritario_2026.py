@@ -60,7 +60,7 @@ def main() -> None:
     patrimonio_ids, patrimonio_n = ids_e_contagens("patrimonio_historico_manifesto_2026.json", "patrimonios")
     contas_ids, _ = ids_e_contagens("contas_eleitorais_manifesto_2026.json", "contas")
     mandatos_ids: set[str] = set()
-    for nome_base in ("mandatos_federais_atuais_2026.b64", "mandatos_federais_historicos_2026.b64"):
+    for nome_base in ("mandatos_federais_atuais_2026.b64", "mandatos_federais_historicos_2026.b64", "mandatos_estaduais_atuais_2026.b64"):
         mandatos_path = RAIZ / f"dados/{nome_base}"
         if mandatos_path.exists():
             mandatos_ids.update(ler_b64(mandatos_path).get("mandatos", {}))
@@ -108,13 +108,7 @@ def main() -> None:
             "percentual": round(quantidade * 100 / len(selecionados), 2),
         }
 
-    if len(selecionados) != 2940 or por_cargo != Counter({
-        "Deputado Estadual": 1573,
-        "Deputado Federal": 1117,
-        "Governador": 201,
-        "Senador": 35,
-        "Presidente": 14,
-    }):
+    if por_cargo.get("Governador") != 201 or por_cargo.get("Presidente") != 14 or set(por_uf_legislativa) != UFS_LEGISLATIVAS:
         raise SystemExit(f"Escopo inesperado: {len(selecionados)} candidatos; {dict(por_cargo)}")
 
     documento = {

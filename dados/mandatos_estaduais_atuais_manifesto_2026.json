@@ -1,0 +1,21 @@
+{
+  "eleicao": 2026,
+  "escopo": "mandatos_estaduais_atuais_sc_pr_rs",
+  "atualizado_em_utc": "2026-09-26T11:09:02+00:00",
+  "criterio_vinculo": "Nome parlamentar oficial exatamente igual ao nome civil ou de urna normalizado, mesma UF e vínculo único.",
+  "fontes": {
+    "SC": "https://www.alesc.sc.gov.br/deputados/",
+    "PR": "https://www.assembleia.pr.leg.br/deputados/conheca",
+    "RS": "https://ww4.al.rs.gov.br:5000/listarDestaqueDeputados"
+  },
+  "quantidade_parlamentares_nas_fontes": 149,
+  "quantidade_vinculos": 130,
+  "quantidade_ambiguos": 0,
+  "por_estado": {
+    "PR": 49,
+    "RS": 49,
+    "SC": 32
+  },
+  "arquivo": "dados/mandatos_estaduais_atuais_2026.b64",
+  "observacao": "A carga cobre parlamentares estaduais em exercício nas listas oficiais atuais de SC, PR e RS."
+}

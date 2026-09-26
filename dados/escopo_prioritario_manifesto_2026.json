@@ -1,43 +1,43 @@
 {
   "eleicao": 2026,
   "data_alvo": "04/10/2026",
-  "gerado_a_partir_do_catalogo_tse_em": "25/09/2026 08:30:44",
-  "quantidade_prioritaria": 2940,
+  "gerado_a_partir_do_catalogo_tse_em": "25/09/2026 19:30:44",
+  "quantidade_prioritaria": 2941,
   "quantidade_perfil_completo": 215,
-  "quantidade_perfil_regional": 2725,
-  "quantidade_catalogo_nacional": 20062,
+  "quantidade_perfil_regional": 2726,
+  "quantidade_catalogo_nacional": 20063,
   "por_cargo": {
     "Deputado Estadual": 1573,
-    "Deputado Federal": 1117,
+    "Deputado Federal": 1118,
     "Governador": 201,
     "Presidente": 14,
     "Senador": 35
   },
   "por_uf_legislativa": {
     "PR": 1054,
-    "RS": 1013,
+    "RS": 1014,
     "SC": 658
   },
   "cobertura": {
     "historico_eleitoral": {
-      "quantidade": 2751,
+      "quantidade": 2752,
       "percentual": 93.57
     },
     "votos_historicos": {
       "quantidade": 2133,
-      "percentual": 72.55
+      "percentual": 72.53
     },
     "patrimonio": {
-      "quantidade": 2276,
-      "percentual": 77.41
+      "quantidade": 2277,
+      "percentual": 77.42
     },
     "contas_eleitorais_2026": {
       "quantidade": 2858,
-      "percentual": 97.21
+      "percentual": 97.18
     },
     "mandatos": {
-      "quantidade": 176,
-      "percentual": 5.99
+      "quantidade": 299,
+      "percentual": 10.17
     },
     "atuacao_publica": {
       "quantidade": 0,
