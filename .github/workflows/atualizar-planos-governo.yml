@@ -22,18 +22,23 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Preparar extração de texto e OCR
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils tesseract-ocr tesseract-ocr-por
       - name: Atualizar propostas oficiais na ordem SC, RS e PR
         run: |
           python scripts/gerar_planos_governo_2026.py --ufs SC RS PR
+          python scripts/gerar_texto_planos_governo_2026.py --ufs SC
           python scripts/gerar_escopo_prioritario_2026.py
       - name: Publicar alterações
         run: |
-          if [ -z "$(git status --porcelain -- dados/planos_governo_2026_sc.b64 dados/planos_governo_2026_rs.b64 dados/planos_governo_2026_pr.b64 dados/planos_governo_manifesto_2026.json dados/escopo_prioritario_2026.b64 dados/escopo_prioritario_manifesto_2026.json)" ]; then
+          if [ -z "$(git status --porcelain -- dados/planos_governo_2026_sc.b64 dados/planos_governo_2026_rs.b64 dados/planos_governo_2026_pr.b64 dados/planos_governo_manifesto_2026.json dados/planos_governo_texto_2026_sc.b64 dados/planos_governo_texto_manifesto_2026.json dados/escopo_prioritario_2026.b64 dados/escopo_prioritario_manifesto_2026.json)" ]; then
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add dados/planos_governo_2026_sc.b64 dados/planos_governo_2026_rs.b64 dados/planos_governo_2026_pr.b64 dados/planos_governo_manifesto_2026.json dados/escopo_prioritario_2026.b64 dados/escopo_prioritario_manifesto_2026.json
+          git add dados/planos_governo_2026_sc.b64 dados/planos_governo_2026_rs.b64 dados/planos_governo_2026_pr.b64 dados/planos_governo_manifesto_2026.json dados/planos_governo_texto_2026_sc.b64 dados/planos_governo_texto_manifesto_2026.json dados/escopo_prioritario_2026.b64 dados/escopo_prioritario_manifesto_2026.json
           git commit -m "Atualiza planos de governo prioritarios"
           git pull --rebase origin main
           git push origin HEAD:main
