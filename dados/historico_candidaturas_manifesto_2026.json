@@ -2,11 +2,11 @@
   "ano_referencia": 2026,
   "fonte": "Tribunal Superior Eleitoral — Histórico de candidaturas",
   "fonte_url": "https://dadosabertos.tse.jus.br/dataset/candidatos-2026",
-  "gerado_pelo_tse_em": "25/09/2026 12:34:26",
-  "quantidade_candidatos_com_historico": 18348,
+  "gerado_pelo_tse_em": "25/09/2026 19:33:48",
+  "quantidade_candidatos_com_historico": 18349,
   "quantidade_candidatos_sem_historico": 1714,
-  "quantidade_candidatos_no_catalogo": 20062,
-  "quantidade_registros": 53916,
+  "quantidade_candidatos_no_catalogo": 20063,
+  "quantidade_registros": 53917,
   "periodo": {
     "inicio": 2004,
     "fim": 2026
@@ -129,8 +129,8 @@
     },
     "RS": {
       "arquivo": "dados/historico_candidaturas_2026_rs.b64",
-      "quantidade_candidatos": 944,
-      "quantidade_registros": 2785
+      "quantidade_candidatos": 945,
+      "quantidade_registros": 2786
     },
     "SC": {
       "arquivo": "dados/historico_candidaturas_2026_sc.b64",
