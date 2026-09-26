@@ -1,0 +1,15 @@
+{
+  "eleicao": 2026,
+  "cargo": "Senador",
+  "uf": "SC",
+  "atualizado_em_utc": "2026-09-26T20:19:29+00:00",
+  "quantidade_candidatos": 13,
+  "quantidade_com_exercicio_senado": 1,
+  "quantidade_votacoes": 1141,
+  "arquivo": "dados/atuacao_senado_2026_sc.b64",
+  "fontes": {
+    "votacoes": "https://www12.senado.leg.br/dados-abertos/legislativo/plenario/votacoes-nominais/info/webservice-de-votacoes-de-um-senador",
+    "gastos": "https://www6g.senado.leg.br/transparencia/"
+  },
+  "observacao": "Ausência nesta carga não significa ausência de atuação pública; significa que não houve exercício no Senado vinculado pelas bases oficiais usadas."
+}

@@ -67,6 +67,9 @@ def main() -> None:
     planos_ids: set[str] = set()
     for planos_path in sorted((RAIZ / "dados").glob("planos_governo_2026_*.b64")):
         planos_ids.update(ler_b64(planos_path).get("propostas", {}))
+    atuacao_ids: set[str] = set()
+    for atuacao_path in sorted((RAIZ / "dados").glob("atuacao_senado_2026_*.b64")):
+        atuacao_ids.update(ler_b64(atuacao_path).get("atuacoes", {}))
 
     selecionados = []
     for cid, c in catalogo.items():
@@ -94,7 +97,7 @@ def main() -> None:
                 "quantidade_declaracoes_patrimoniais": patrimonio_n.get(cid, 0),
                 "contas_eleitorais_2026": cid in contas_ids,
                 "mandatos": cid in mandatos_ids,
-                "atuacao_publica": False,
+                "atuacao_publica": cid in atuacao_ids,
                 "plano_governo": cid in planos_ids,
             },
         })
