@@ -64,6 +64,9 @@ def main() -> None:
         mandatos_path = RAIZ / f"dados/{nome_base}"
         if mandatos_path.exists():
             mandatos_ids.update(ler_b64(mandatos_path).get("mandatos", {}))
+    planos_ids: set[str] = set()
+    for planos_path in sorted((RAIZ / "dados").glob("planos_governo_2026_*.b64")):
+        planos_ids.update(ler_b64(planos_path).get("propostas", {}))
 
     selecionados = []
     for cid, c in catalogo.items():
@@ -92,7 +95,7 @@ def main() -> None:
                 "contas_eleitorais_2026": cid in contas_ids,
                 "mandatos": cid in mandatos_ids,
                 "atuacao_publica": False,
-                "plano_governo": False,
+                "plano_governo": cid in planos_ids,
             },
         })
     selecionados.sort(key=lambda x: (x["prioridade"] != "perfil_completo", x["uf"], x["cargo"], x["nome_urna"]))
