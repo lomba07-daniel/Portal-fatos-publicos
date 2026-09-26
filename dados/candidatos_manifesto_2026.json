@@ -3,7 +3,7 @@
   "fonte": "Tribunal Superior Eleitoral — Dados Abertos",
   "fonte_url": "https://dadosabertos.tse.jus.br/dataset/candidatos-2026",
   "arquivo_origem": "consulta_cand_2026_BRASIL.csv",
-  "gerado_pelo_tse_em": "25/09/2026 19:30:44",
+  "gerado_pelo_tse_em": "26/09/2026 08:31:16",
   "quantidade_publicada": 20063,
   "por_cargo": {
     "Presidente": 14,
@@ -17,7 +17,7 @@
     "Presidente": 0,
     "Governador": 0,
     "Senador": 0,
-    "Deputado Federal": 1,
+    "Deputado Federal": 0,
     "Deputado Estadual": 0,
     "Deputado Distrital": 0
   },
