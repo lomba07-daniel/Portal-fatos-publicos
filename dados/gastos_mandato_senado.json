@@ -14,10 +14,10 @@
     2026
   ],
   "ano_corrente_parcial": 2026,
-  "atualizado_em_utc": "2026-09-25T09:46:04+00:00",
+  "atualizado_em_utc": "2026-09-26T09:43:49+00:00",
   "total_ceaps_periodo": 1226242.18,
-  "total_fora_ceaps_periodo": 865324.4,
-  "total_mostrado_periodo": 2091566.58,
+  "total_fora_ceaps_periodo": 922675.91,
+  "total_mostrado_periodo": 2148918.09,
   "agregado_ceaps": [
     {
       "categoria": "Passagens aéreas, aquáticas e terrestres nacionais",
@@ -62,16 +62,16 @@
       "valor": 58268.97
     },
     {
+      "categoria": "Viagens Oficiais - Diárias",
+      "valor": 57351.51
+    },
+    {
       "categoria": "Cotas para Impulsionamento em Mídias Sociais",
       "valor": 19001.22
     },
     {
       "categoria": "Viagens Oficiais - Ressarcimento de Passagens",
       "valor": 14519.27
-    },
-    {
-      "categoria": "Viagens Oficiais - Diárias",
-      "valor": 0.0
     }
   ],
   "por_ano": [
@@ -112,7 +112,7 @@
       "fora_ceaps": [
         {
           "categoria": "Viagens Oficiais - Diárias",
-          "valor": 0.0
+          "valor": 8694.4
         },
         {
           "categoria": "Viagens Oficiais - Ressarcimento de Passagens",
@@ -135,8 +135,8 @@
           "valor": 0.0
         }
       ],
-      "total_fora_ceaps": 26907.82,
-      "total_mostrado": 206621.72,
+      "total_fora_ceaps": 35602.22,
+      "total_mostrado": 215316.12,
       "fonte_api": "https://adm.senado.gov.br/adm-dadosabertos/api/v1/senadores/5894/recursos-utilizados?ano=2019&formato=json",
       "fonte_visual": "https://www6g.senado.leg.br/transparencia/sen/5894/?ano=2019"
     },
@@ -177,7 +177,7 @@
       "fora_ceaps": [
         {
           "categoria": "Viagens Oficiais - Diárias",
-          "valor": 0.0
+          "valor": 12520.14
         },
         {
           "categoria": "Viagens Oficiais - Ressarcimento de Passagens",
@@ -200,8 +200,8 @@
           "valor": 0.0
         }
       ],
-      "total_fora_ceaps": 9823.01,
-      "total_mostrado": 96227.8,
+      "total_fora_ceaps": 22343.15,
+      "total_mostrado": 108747.94,
       "fonte_api": "https://adm.senado.gov.br/adm-dadosabertos/api/v1/senadores/5894/recursos-utilizados?ano=2020&formato=json",
       "fonte_visual": "https://www6g.senado.leg.br/transparencia/sen/5894/?ano=2020"
     },
@@ -242,7 +242,7 @@
       "fora_ceaps": [
         {
           "categoria": "Viagens Oficiais - Diárias",
-          "valor": 0.0
+          "valor": 26979.26
         },
         {
           "categoria": "Viagens Oficiais - Ressarcimento de Passagens",
@@ -265,8 +265,8 @@
           "valor": 0.0
         }
       ],
-      "total_fora_ceaps": 44356.7,
-      "total_mostrado": 180024.25,
+      "total_fora_ceaps": 71335.96,
+      "total_mostrado": 207003.51,
       "fonte_api": "https://adm.senado.gov.br/adm-dadosabertos/api/v1/senadores/5894/recursos-utilizados?ano=2021&formato=json",
       "fonte_visual": "https://www6g.senado.leg.br/transparencia/sen/5894/?ano=2021"
     },
@@ -372,7 +372,7 @@
       "fora_ceaps": [
         {
           "categoria": "Viagens Oficiais - Diárias",
-          "valor": 0.0
+          "valor": 9157.71
         },
         {
           "categoria": "Viagens Oficiais - Ressarcimento de Passagens",
@@ -395,8 +395,8 @@
           "valor": 45422.62
         }
       ],
-      "total_fora_ceaps": 227534.24,
-      "total_mostrado": 349776.44,
+      "total_fora_ceaps": 236691.95,
+      "total_mostrado": 358934.15,
       "fonte_api": "https://adm.senado.gov.br/adm-dadosabertos/api/v1/senadores/5894/recursos-utilizados?ano=2023&formato=json",
       "fonte_visual": "https://www6g.senado.leg.br/transparencia/sen/5894/?ano=2023"
     },
