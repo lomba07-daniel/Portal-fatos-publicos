@@ -68,7 +68,7 @@ def main() -> None:
     for planos_path in sorted((RAIZ / "dados").glob("planos_governo_2026_*.b64")):
         planos_ids.update(ler_b64(planos_path).get("propostas", {}))
     atuacao_ids: set[str] = set()
-    for atuacao_path in sorted((RAIZ / "dados").glob("atuacao_senado_2026_*.b64")):
+    for atuacao_path in sorted((RAIZ / "dados").glob("atuacao_*_2026_*.b64")):
         atuacao_ids.update(ler_b64(atuacao_path).get("atuacoes", {}))
 
     selecionados = []
