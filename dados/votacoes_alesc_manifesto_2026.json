@@ -1,0 +1,14 @@
+{
+  "eleicao": 2026,
+  "cargo": "Deputado Estadual",
+  "uf": "SC",
+  "atualizado_em_utc": "2026-09-28T16:08:15+00:00",
+  "periodo": "02/02/2023–16/09/2026",
+  "quantidade_parlamentares": 28,
+  "quantidade_sessoes_avaliadas": 616,
+  "quantidade_votacoes_nominais": 226,
+  "quantidade_votos_vinculados": 4117,
+  "arquivo": "dados/votacoes_alesc_2026_sc.b64",
+  "fonte": "https://portalelegis.alesc.sc.gov.br/sessoes-plenarias",
+  "observacao": "A base inclui apenas votos individualizados nos extratos nominais; votação simbólica, ausência e presença sem voto não são posições inferidas."
+}
