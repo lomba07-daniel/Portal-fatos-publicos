@@ -1,0 +1,16 @@
+{
+  "eleicao": 2026,
+  "cargo": "Senador",
+  "uf": "RS",
+  "atualizado_em_utc": "2026-09-28T17:15:23+00:00",
+  "quantidade_candidatos": 13,
+  "quantidade_com_exercicio_senado": 0,
+  "quantidade_com_exercicio_camara": 5,
+  "quantidade_com_exercicio_atual_camara": 2,
+  "quantidade_votos_camara": 9451,
+  "total_ceap_centavos": 1330407575,
+  "cobertura_votos": "2001–2026",
+  "cobertura_ceap": "2008–2026",
+  "arquivo": "dados/atuacao_federal_senado_2026_rs.b64",
+  "observacao": "Nenhum candidato foi vinculado a exercício no Senado. Registros da Câmara respeitam os limites temporais das fontes; ausência de registro não comprova ausência de atuação."
+}

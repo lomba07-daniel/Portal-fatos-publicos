@@ -1,0 +1,36 @@
+name: Atualizar atuação federal dos candidatos ao Senado pelo RS
+
+on:
+  schedule:
+    - cron: "29 11 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: atualizar-atuacao-federal-senado-rs
+  cancel-in-progress: false
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Gerar carga oficial da Câmara e verificar Senado
+        run: python scripts/gerar_atuacao_federal_senado_rs_2026.py
+      - name: Publicar se houver mudança
+        run: |
+          if git diff --quiet -- dados/atuacao_federal_senado_2026_rs.b64 dados/atuacao_federal_senado_manifesto_2026_rs.json; then
+            echo "Sem alterações."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/atuacao_federal_senado_2026_rs.b64 dados/atuacao_federal_senado_manifesto_2026_rs.json
+          git commit -m "Atualiza atuação federal dos candidatos ao Senado pelo RS"
+          git push
