@@ -1,0 +1,35 @@
+name: Atualizar proposições dos candidatos na ALESC
+
+on:
+  schedule:
+    - cron: "53 10 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: atualizar-proposicoes-alesc
+  cancel-in-progress: false
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Gerar carga oficial do e-Legis
+        run: python scripts/gerar_proposicoes_alesc_sc_2026.py
+      - name: Publicar se houver mudança
+        run: |
+          if git diff --quiet -- dados/proposicoes_alesc_2026_sc.b64 dados/proposicoes_alesc_manifesto_2026.json; then
+            echo "Sem alterações."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/proposicoes_alesc_2026_sc.b64 dados/proposicoes_alesc_manifesto_2026.json
+          git commit -m "Atualiza proposições dos candidatos na ALESC"
+          git push
