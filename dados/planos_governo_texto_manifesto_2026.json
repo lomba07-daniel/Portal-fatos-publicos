@@ -2,17 +2,28 @@
   "eleicao": 2026,
   "escopo": "texto_pesquisavel_das_propostas",
   "ordem_prioridade": [
+    "BR",
     "SC",
     "RS",
     "PR"
   ],
-  "estados_concluidos": [
+  "unidades_concluidas": [
+    "BR",
     "SC"
   ],
   "arquivos_por_uf": {
+    "BR": {
+      "arquivo": "dados/planos_governo_texto_2026_br.b64",
+      "data_pacote_tse": "2026-09-29T06:46:18",
+      "quantidade_candidatos": 14,
+      "quantidade_documentos": 14,
+      "por_metodo_extracao": {
+        "texto_embutido": 14
+      }
+    },
     "SC": {
       "arquivo": "dados/planos_governo_texto_2026_sc.b64",
-      "data_pacote_tse": "2026-09-26T06:48:32",
+      "data_pacote_tse": "2026-09-28T08:50:36",
       "quantidade_candidatos": 8,
       "quantidade_documentos": 8,
       "por_metodo_extracao": {
@@ -21,11 +32,11 @@
       }
     }
   },
-  "quantidade_candidatos": 8,
-  "quantidade_documentos": 8,
+  "quantidade_candidatos": 22,
+  "quantidade_documentos": 22,
   "por_metodo_extracao": {
-    "texto_embutido": 6,
+    "texto_embutido": 20,
     "ocr": 2
   },
-  "metodologia": "Busca no texto oficial. Temas formados por palavras-chave; resultados não são resumo, promessa confirmada ou avaliação de viabilidade."
+  "metodologia": "Busca no texto oficial com página preservada. Temas formados por palavras-chave; resultados não são resumo, promessa confirmada ou avaliação de viabilidade."
 }

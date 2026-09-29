@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Vincula propostas oficiais do TSE, com prioridade SC → RS → PR."""
+"""Vincula propostas oficiais do TSE, com prioridade Presidência → SC."""
 
 from __future__ import annotations
 
@@ -18,7 +18,8 @@ from pathlib import Path
 
 
 RAIZ = Path(__file__).resolve().parent.parent
-UFS_PRIORITARIAS = ("SC", "RS", "PR")
+UNIDADES_PRIORITARIAS = ("BR", "SC", "RS", "PR")
+UNIDADES_PADRAO = ("BR", "SC")
 ID_ELEICAO = "20322002026"
 URL_PACOTE = "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_{uf}.zip"
 URL_CANDIDATO = "https://divulgacandcontas.tse.jus.br/divulga/rest/v1/candidatura/buscar/2026/{uf}/" + ID_ELEICAO + "/candidato/{cid}"
@@ -50,12 +51,15 @@ def obter(url: str, *, metodo: str = "GET") -> bytes | urllib.response.addinfour
     raise RuntimeError(f"Fonte oficial indisponível: {url}: {ultimo_erro}")
 
 
-def candidatos_governador() -> dict[str, dict]:
+def candidatos_executivos() -> dict[str, dict]:
     doc = ler_b64(RAIZ / "dados/candidatos_executivos_2026.b64")
     return {
         str(c["sq_candidato"]): c
         for c in doc.get("candidatos", [])
-        if c.get("cargo") == "Governador" and c.get("uf") in UFS_PRIORITARIAS
+        if (
+            (c.get("cargo") == "Presidente" and c.get("uf") == "BR")
+            or (c.get("cargo") == "Governador" and c.get("uf") in UNIDADES_PRIORITARIAS)
+        )
     }
 
 
@@ -140,7 +144,7 @@ def processar_uf(uf: str, candidatos: dict[str, dict]) -> tuple[dict, dict]:
     documento = {
         "eleicao": 2026,
         "uf": uf,
-        "cargo": "Governador",
+        "cargo": "Presidente" if uf == "BR" else "Governador",
         "fonte": "Tribunal Superior Eleitoral — Dados Abertos e DivulgaCandContas",
         "fonte_url": URL_PACOTE.format(uf=uf),
         "data_pacote_tse": data_pacote,
@@ -162,20 +166,26 @@ def processar_uf(uf: str, candidatos: dict[str, dict]) -> tuple[dict, dict]:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--ufs", nargs="+", choices=UFS_PRIORITARIAS, default=list(UFS_PRIORITARIAS))
+    parser.add_argument("--ufs", nargs="+", choices=UNIDADES_PRIORITARIAS, default=list(UNIDADES_PADRAO))
     args = parser.parse_args()
-    ordem = [uf for uf in UFS_PRIORITARIAS if uf in args.ufs]
-    candidatos = candidatos_governador()
-    referencias, totais = {}, Counter()
+    ordem = [uf for uf in UNIDADES_PRIORITARIAS if uf in args.ufs]
+    candidatos = candidatos_executivos()
+    caminho_manifesto = RAIZ / "dados/planos_governo_manifesto_2026.json"
+    anterior = json.loads(caminho_manifesto.read_text(encoding="utf-8")) if caminho_manifesto.exists() else {}
+    referencias = dict(anterior.get("arquivos_por_uf", {}))
     for uf in ordem:
         documento, referencias[uf] = processar_uf(uf, candidatos)
-        totais["candidatos"] += documento["quantidade_candidatos"]
-        totais["documentos"] += documento["quantidade_documentos"]
+
+    referencias = {uf: referencias[uf] for uf in UNIDADES_PRIORITARIAS if uf in referencias}
+    totais = Counter()
+    for ref in referencias.values():
+        totais["candidatos"] += ref["quantidade_candidatos"]
+        totais["documentos"] += ref["quantidade_documentos"]
 
     manifesto = {
         "eleicao": 2026,
-        "escopo": "propostas_de_governo_prioridade_sul",
-        "ordem_prioridade": list(UFS_PRIORITARIAS),
+        "escopo": "propostas_executivas_prioridade_presidencia_sc",
+        "ordem_prioridade": list(UNIDADES_PRIORITARIAS),
         "fonte": "Tribunal Superior Eleitoral — Dados Abertos e DivulgaCandContas",
         "pagina_fonte": "https://dadosabertos.tse.jus.br/dataset/candidatos-2026",
         "arquivos_por_uf": referencias,
@@ -183,7 +193,7 @@ def main() -> None:
         "quantidade_documentos": totais["documentos"],
         "observacao": "Os links abrem os documentos atuais no domínio oficial do TSE; publicação não significa validação das propostas pelo Tribunal ou pelo portal.",
     }
-    (RAIZ / "dados/planos_governo_manifesto_2026.json").write_text(
+    caminho_manifesto.write_text(
         json.dumps(manifesto, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
     print(json.dumps(manifesto, ensure_ascii=False))

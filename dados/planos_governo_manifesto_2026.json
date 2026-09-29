@@ -1,7 +1,8 @@
 {
   "eleicao": 2026,
-  "escopo": "propostas_de_governo_prioridade_sul",
+  "escopo": "propostas_executivas_prioridade_presidencia_sc",
   "ordem_prioridade": [
+    "BR",
     "SC",
     "RS",
     "PR"
@@ -9,6 +10,13 @@
   "fonte": "Tribunal Superior Eleitoral — Dados Abertos e DivulgaCandContas",
   "pagina_fonte": "https://dadosabertos.tse.jus.br/dataset/candidatos-2026",
   "arquivos_por_uf": {
+    "BR": {
+      "arquivo": "dados/planos_governo_2026_br.b64",
+      "fonte_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_BR.zip",
+      "data_pacote_tse": "2026-09-29T06:46:18",
+      "quantidade_candidatos": 14,
+      "quantidade_documentos": 14
+    },
     "SC": {
       "arquivo": "dados/planos_governo_2026_sc.b64",
       "fonte_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_SC.zip",
@@ -31,7 +39,7 @@
       "quantidade_documentos": 9
     }
   },
-  "quantidade_candidatos": 23,
-  "quantidade_documentos": 24,
+  "quantidade_candidatos": 37,
+  "quantidade_documentos": 38,
   "observacao": "Os links abrem os documentos atuais no domínio oficial do TSE; publicação não significa validação das propostas pelo Tribunal ou pelo portal."
 }

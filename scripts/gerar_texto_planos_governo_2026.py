@@ -21,7 +21,8 @@ from pathlib import Path
 
 
 RAIZ = Path(__file__).resolve().parent.parent
-UFS_PRIORITARIAS = ("SC", "RS", "PR")
+UNIDADES_PRIORITARIAS = ("BR", "SC", "RS", "PR")
+UNIDADES_PADRAO = ("BR", "SC")
 URL_MODELO = "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_{uf}.zip"
 PADRAO = re.compile(r"^2026(?P<uf>[A-Z]{2})(?P<id>\d{12})_(?P<ordem>\d+)\.pdf$", re.I)
 USER_AGENT = "PortalFatosPublicos/1.0 (dados públicos; contato pelo repositório)"
@@ -77,14 +78,18 @@ def idiomas_tesseract() -> str:
     return "por+eng" if {"por", "eng"} <= disponiveis else "por" if "por" in disponiveis else "eng"
 
 
-def extrair_texto(pdf: Path, paginas: int) -> tuple[str, str, str | None]:
+def extrair_paginas(pdf: Path, paginas: int) -> tuple[list[str], str, str | None]:
     texto = subprocess.check_output(
-        ["pdftotext", "-layout", "-nopgbrk", "-enc", "UTF-8", str(pdf), "-"],
+        ["pdftotext", "-layout", "-enc", "UTF-8", str(pdf), "-"],
         text=True,
         errors="replace",
     )
     if len(normalizar(texto)) >= max(900, paginas * 35):
-        return texto, "texto_embutido", None
+        partes = texto.split("\f")
+        if partes and not partes[-1].strip():
+            partes.pop()
+        partes.extend([""] * max(0, paginas - len(partes)))
+        return partes[:paginas], "texto_embutido", None
 
     idioma = idiomas_tesseract()
     with tempfile.TemporaryDirectory(prefix="portal_ocr_") as pasta:
@@ -106,7 +111,7 @@ def extrair_texto(pdf: Path, paginas: int) -> tuple[str, str, str | None]:
         texto = "\n\n".join(partes)
     if len(normalizar(texto)) < max(900, paginas * 35):
         raise RuntimeError(f"OCR insuficiente para {pdf.name}: {len(texto)} caracteres")
-    return texto, "ocr", idioma
+    return partes, "ocr", idioma
 
 
 def quebrar_bloco(bloco: str, limite: int = 700) -> list[str]:
@@ -125,30 +130,33 @@ def quebrar_bloco(bloco: str, limite: int = 700) -> list[str]:
     return partes
 
 
-def paragrafos(texto: str) -> list[str]:
-    texto = texto.replace("\r", "\n").replace("\f", "\n\n")
-    blocos = re.split(r"\n\s*\n+", texto)
+def paragrafos(paginas: list[str]) -> list[dict]:
     resultado, vistos = [], set()
-    for bloco in blocos:
-        unido = " ".join(l.strip() for l in bloco.splitlines() if l.strip())
-        for parte in quebrar_bloco(unido):
-            chave = normalizar(parte)
-            if len(chave) < 35 or chave in vistos:
-                continue
-            vistos.add(chave)
-            resultado.append(parte)
+    for numero, texto in enumerate(paginas, start=1):
+        texto = texto.replace("\r", "\n").replace("\f", "\n\n")
+        blocos = re.split(r"\n\s*\n+", texto)
+        for bloco in blocos:
+            unido = " ".join(l.strip() for l in bloco.splitlines() if l.strip())
+            for parte in quebrar_bloco(unido):
+                chave = normalizar(parte)
+                if len(chave) < 35 or chave in vistos:
+                    continue
+                vistos.add(chave)
+                resultado.append({"pagina": numero, "texto": parte})
     return resultado
 
 
-def indexar_temas(itens: list[str], ordem_documento: int) -> dict[str, list[dict]]:
+def indexar_temas(itens: list[dict], ordem_documento: int) -> dict[str, list[dict]]:
     indice: dict[str, list[dict]] = defaultdict(list)
-    for texto in itens:
+    for item in itens:
+        texto = item["texto"]
         base = normalizar(texto)
         for tema, termos in TEMAS.items():
             encontrados = sorted({termo for termo in termos if termo in base})
             if encontrados:
                 indice[tema].append({
                     "documento": ordem_documento,
+                    "pagina": item["pagina"],
                     "termos": encontrados,
                     "texto": texto,
                 })
@@ -177,23 +185,25 @@ def processar_uf(uf: str, recriar_ocr: bool = False) -> tuple[dict, dict]:
             pdf_bruto = pacote.read(info)
             sha = hashlib.sha256(pdf_bruto).hexdigest()
             reutilizado = cache.get(sha)
-            if reutilizado and not (recriar_ocr and reutilizado.get("metodo_extracao") == "ocr"):
+            formato_atual = reutilizado and reutilizado.get("formato_extracao") == 2
+            if formato_atual and not (recriar_ocr and reutilizado.get("metodo_extracao") == "ocr"):
                 doc = reutilizado
             else:
                 pdf = Path(pasta) / nome
                 pdf.write_bytes(pdf_bruto)
                 paginas = numero_paginas(pdf)
-                texto, metodo, idioma = extrair_texto(pdf, paginas)
-                itens = paragrafos(texto)
+                paginas_texto, metodo, idioma = extrair_paginas(pdf, paginas)
+                itens = paragrafos(paginas_texto)
                 doc = {
+                    "formato_extracao": 2,
                     "ordem": ordem,
                     "nome_arquivo_tse": nome,
                     "sha256": sha,
                     "paginas": paginas,
                     "metodo_extracao": metodo,
                     "idioma_ocr": idioma,
-                    "quantidade_caracteres": sum(map(len, itens)),
-                    "quantidade_palavras": sum(len(x.split()) for x in itens),
+                    "quantidade_caracteres": sum(len(x["texto"]) for x in itens),
+                    "quantidade_palavras": sum(len(x["texto"].split()) for x in itens),
                     "paragrafos": itens,
                     "temas": indexar_temas(itens, ordem),
                 }
@@ -219,7 +229,7 @@ def processar_uf(uf: str, recriar_ocr: bool = False) -> tuple[dict, dict]:
         "fonte": "Tribunal Superior Eleitoral — propostas de governo",
         "fonte_url": URL_MODELO.format(uf=uf),
         "data_pacote_tse": max(datas),
-        "metodologia": "Texto nativo do PDF; OCR apenas quando o arquivo é composto por imagens. Temas associados por coincidência literal de termos, sem síntese ou interpretação.",
+        "metodologia": "Texto nativo do PDF; OCR apenas quando o arquivo é composto por imagens. Cada trecho preserva a página do PDF. Temas associados por coincidência literal de termos, sem síntese ou interpretação.",
         "quantidade_candidatos": len(propostas),
         "quantidade_documentos": sum(len(x["documentos"]) for x in propostas.values()),
         "por_metodo_extracao": dict(sorted(contagens.items())),
@@ -238,28 +248,33 @@ def processar_uf(uf: str, recriar_ocr: bool = False) -> tuple[dict, dict]:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--ufs", nargs="+", choices=UFS_PRIORITARIAS, default=["SC"])
+    parser.add_argument("--ufs", nargs="+", choices=UNIDADES_PRIORITARIAS, default=list(UNIDADES_PADRAO))
     parser.add_argument("--recriar-ocr", action="store_true", help="Refaz apenas os documentos anteriormente extraídos por OCR.")
     args = parser.parse_args()
-    ordem = [uf for uf in UFS_PRIORITARIAS if uf in args.ufs]
-    refs, totais = {}, Counter()
+    ordem = [uf for uf in UNIDADES_PRIORITARIAS if uf in args.ufs]
+    caminho_manifesto = RAIZ / "dados/planos_governo_texto_manifesto_2026.json"
+    anterior = json.loads(caminho_manifesto.read_text(encoding="utf-8")) if caminho_manifesto.exists() else {}
+    refs = dict(anterior.get("arquivos_por_uf", {}))
     for uf in ordem:
         doc, refs[uf] = processar_uf(uf, recriar_ocr=args.recriar_ocr)
-        totais["candidatos"] += doc["quantidade_candidatos"]
-        totais["documentos"] += doc["quantidade_documentos"]
-        totais.update(doc["por_metodo_extracao"])
+    refs = {uf: refs[uf] for uf in UNIDADES_PRIORITARIAS if uf in refs}
+    totais = Counter()
+    for ref in refs.values():
+        totais["candidatos"] += ref["quantidade_candidatos"]
+        totais["documentos"] += ref["quantidade_documentos"]
+        totais.update(ref["por_metodo_extracao"])
     manifesto = {
         "eleicao": 2026,
         "escopo": "texto_pesquisavel_das_propostas",
-        "ordem_prioridade": list(UFS_PRIORITARIAS),
-        "estados_concluidos": ordem,
+        "ordem_prioridade": list(UNIDADES_PRIORITARIAS),
+        "unidades_concluidas": list(refs),
         "arquivos_por_uf": refs,
         "quantidade_candidatos": totais["candidatos"],
         "quantidade_documentos": totais["documentos"],
         "por_metodo_extracao": {k: totais[k] for k in ("texto_embutido", "ocr") if totais[k]},
-        "metodologia": "Busca no texto oficial. Temas formados por palavras-chave; resultados não são resumo, promessa confirmada ou avaliação de viabilidade.",
+        "metodologia": "Busca no texto oficial com página preservada. Temas formados por palavras-chave; resultados não são resumo, promessa confirmada ou avaliação de viabilidade.",
     }
-    (RAIZ / "dados/planos_governo_texto_manifesto_2026.json").write_text(
+    caminho_manifesto.write_text(
         json.dumps(manifesto, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
     print(json.dumps(manifesto, ensure_ascii=False))
