@@ -25,13 +25,13 @@
     "2020": "06/01/2026 16:44:43",
     "2022": "28/09/2026 03:42:08",
     "2024": "28/09/2026 02:16:30",
-    "2026": "28/09/2026 12:31:28"
+    "2026": "28/09/2026 19:31:25"
   },
   "quantidade_candidatos_com_bens": 13749,
   "quantidade_declaracoes": 36011,
-  "linhas_oficiais_processadas": 10201862,
-  "linhas_oficiais_aproveitadas": 398674,
-  "valor_total_centavos": 10117237873240,
+  "linhas_oficiais_processadas": 10201866,
+  "linhas_oficiais_aproveitadas": 398678,
+  "valor_total_centavos": 10117276873240,
   "associacoes_historicas_ambiguas_excluidas": 366,
   "arquivos_por_uf_atual": {
     "AC": {
