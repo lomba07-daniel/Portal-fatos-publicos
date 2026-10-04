@@ -1,11 +1,11 @@
 {
   "eleicao": 2026,
   "data_alvo": "04/10/2026",
-  "gerado_a_partir_do_catalogo_tse_em": "02/10/2026 19:30:38",
+  "gerado_a_partir_do_catalogo_tse_em": "03/10/2026 19:31:31",
   "quantidade_prioritaria": 2941,
   "quantidade_perfil_completo": 215,
   "quantidade_perfil_regional": 2726,
-  "quantidade_catalogo_nacional": 20064,
+  "quantidade_catalogo_nacional": 20065,
   "por_cargo": {
     "Deputado Estadual": 1573,
     "Deputado Federal": 1118,
@@ -32,8 +32,8 @@
       "percentual": 77.42
     },
     "contas_eleitorais_2026": {
-      "quantidade": 2862,
-      "percentual": 97.31
+      "quantidade": 2866,
+      "percentual": 97.45
     },
     "mandatos": {
       "quantidade": 311,
