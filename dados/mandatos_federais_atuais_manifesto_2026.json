@@ -1,7 +1,7 @@
 {
   "eleicao": 2026,
   "escopo": "mandatos_federais_atuais",
-  "atualizado_em_utc": "2026-09-28T07:33:11+00:00",
+  "atualizado_em_utc": "2026-10-05T07:37:30+00:00",
   "criterio_vinculo": "Nome civil exatamente igual após normalização e mesma UF; Presidência exige nome único. Duplicidades ficam sem vínculo.",
   "fontes": {
     "camara": "https://dadosabertos.camara.leg.br/api/v2/deputados?itens=100&ordem=ASC&ordenarPor=nome",
