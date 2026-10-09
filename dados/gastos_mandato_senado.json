@@ -14,10 +14,10 @@
     2026
   ],
   "ano_corrente_parcial": 2026,
-  "atualizado_em_utc": "2026-10-08T09:50:44+00:00",
-  "total_ceaps_periodo": 1226242.18,
+  "atualizado_em_utc": "2026-10-09T09:51:00+00:00",
+  "total_ceaps_periodo": 1231307.86,
   "total_fora_ceaps_periodo": 924125.3,
-  "total_mostrado_periodo": 2150367.48,
+  "total_mostrado_periodo": 2155433.16,
   "agregado_ceaps": [
     {
       "categoria": "Passagens aéreas, aquáticas e terrestres nacionais",
@@ -25,7 +25,7 @@
     },
     {
       "categoria": "Aluguel de imóveis para escritório político",
-      "valor": 406862.29
+      "valor": 411927.97
     },
     {
       "categoria": "Locomoção, hospedagem, alimentação e combustíveis",
@@ -536,7 +536,7 @@
       "ceaps": [
         {
           "categoria": "Aluguel de imóveis para escritório político",
-          "valor": 37521.94
+          "valor": 42587.62
         },
         {
           "categoria": "Aquisição de material de consumo",
@@ -563,7 +563,7 @@
           "valor": 0.0
         }
       ],
-      "total_ceaps": 81198.59,
+      "total_ceaps": 86264.27,
       "fora_ceaps": [
         {
           "categoria": "Viagens Oficiais - Diárias",
@@ -591,7 +591,7 @@
         }
       ],
       "total_fora_ceaps": 20835.62,
-      "total_mostrado": 102034.21,
+      "total_mostrado": 107099.89,
       "fonte_api": "https://adm.senado.gov.br/adm-dadosabertos/api/v1/senadores/5894/recursos-utilizados?ano=2026&formato=json",
       "fonte_visual": "https://www6g.senado.leg.br/transparencia/sen/5894/?ano=2026"
     }
