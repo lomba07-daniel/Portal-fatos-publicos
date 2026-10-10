@@ -1,7 +1,7 @@
 {
   "eleicao": 2026,
   "data_alvo": "04/10/2026",
-  "gerado_a_partir_do_catalogo_tse_em": "08/10/2026 19:31:17",
+  "gerado_a_partir_do_catalogo_tse_em": "09/10/2026 12:30:58",
   "quantidade_prioritaria": 2941,
   "quantidade_perfil_completo": 215,
   "quantidade_perfil_regional": 2726,
@@ -32,8 +32,8 @@
       "percentual": 77.42
     },
     "contas_eleitorais_2026": {
-      "quantidade": 2866,
-      "percentual": 97.45
+      "quantidade": 2867,
+      "percentual": 97.48
     },
     "mandatos": {
       "quantidade": 311,
