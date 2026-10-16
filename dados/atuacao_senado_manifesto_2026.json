@@ -2,10 +2,10 @@
   "eleicao": 2026,
   "cargo": "Senador",
   "uf": "SC",
-  "atualizado_em_utc": "2026-10-15T14:24:14+00:00",
+  "atualizado_em_utc": "2026-10-16T14:12:41+00:00",
   "quantidade_candidatos": 13,
   "quantidade_com_exercicio_senado": 1,
-  "quantidade_votacoes": 1143,
+  "quantidade_votacoes": 1144,
   "arquivo": "dados/atuacao_senado_2026_sc.b64",
   "fontes": {
     "votacoes": "https://www12.senado.leg.br/dados-abertos/legislativo/plenario/votacoes-nominais/info/webservice-de-votacoes-de-um-senador",
