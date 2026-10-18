@@ -2,19 +2,19 @@
   "ano": 2026,
   "fonte": "Tribunal Superior Eleitoral — Prestação de contas eleitorais de candidatos",
   "fonte_url": "https://dadosabertos.tse.jus.br/dataset/prestacao-de-contas-eleitorais-2026",
-  "gerado_pelo_tse_em": "17/10/2026 04:05:37",
+  "gerado_pelo_tse_em": "18/10/2026 04:05:41",
   "quantidade_candidatos_no_catalogo": 20065,
   "quantidade_candidatos_com_movimentacao": 19249,
   "linhas_oficiais_processadas": {
-    "receitas": 179942,
-    "contratadas": 1039337,
-    "pagas": 790680
+    "receitas": 181040,
+    "contratadas": 1044300,
+    "pagas": 801556
   },
   "pagamentos_sem_vinculo_excluidos": 0,
   "totais_centavos": {
-    "receitas_centavos": 661562382088,
-    "despesas_contratadas_centavos": 462896763292,
-    "despesas_pagas_centavos": 335882531835
+    "receitas_centavos": 662807807475,
+    "despesas_contratadas_centavos": 463979637002,
+    "despesas_pagas_centavos": 338107979009
   },
   "arquivos_por_uf_atual": {
     "AC": {
