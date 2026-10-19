@@ -1,17 +1,17 @@
 {
   "eleicao": 2026,
   "escopo": "mandatos_federais_atuais",
-  "atualizado_em_utc": "2026-10-05T07:37:30+00:00",
+  "atualizado_em_utc": "2026-10-19T08:01:46+00:00",
   "criterio_vinculo": "Nome civil exatamente igual após normalização e mesma UF; Presidência exige nome único. Duplicidades ficam sem vínculo.",
   "fontes": {
     "camara": "https://dadosabertos.camara.leg.br/api/v2/deputados?itens=100&ordem=ASC&ordenarPor=nome",
     "senado": "https://legis.senado.leg.br/dadosabertos/senador/lista/atual.json"
   },
-  "quantidade_registros_oficiais_avaliados": 149,
-  "quantidade_vinculos": 78,
+  "quantidade_registros_oficiais_avaliados": 148,
+  "quantidade_vinculos": 77,
   "quantidade_ambiguos": 0,
   "por_casa": {
-    "Câmara dos Deputados": 67,
+    "Câmara dos Deputados": 66,
     "Senado Federal": 11
   },
   "arquivo": "dados/mandatos_federais_atuais_2026.b64",
