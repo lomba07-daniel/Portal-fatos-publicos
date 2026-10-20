@@ -2,19 +2,19 @@
   "ano": 2026,
   "fonte": "Tribunal Superior Eleitoral — Prestação de contas eleitorais de candidatos",
   "fonte_url": "https://dadosabertos.tse.jus.br/dataset/prestacao-de-contas-eleitorais-2026",
-  "gerado_pelo_tse_em": "18/10/2026 04:05:41",
+  "gerado_pelo_tse_em": "20/10/2026 04:05:41",
   "quantidade_candidatos_no_catalogo": 20065,
-  "quantidade_candidatos_com_movimentacao": 19249,
+  "quantidade_candidatos_com_movimentacao": 19254,
   "linhas_oficiais_processadas": {
-    "receitas": 181040,
-    "contratadas": 1044300,
-    "pagas": 801556
+    "receitas": 182728,
+    "contratadas": 1054884,
+    "pagas": 821462
   },
   "pagamentos_sem_vinculo_excluidos": 0,
   "totais_centavos": {
-    "receitas_centavos": 662807807475,
-    "despesas_contratadas_centavos": 463979637002,
-    "despesas_pagas_centavos": 338107979009
+    "receitas_centavos": 665013015888,
+    "despesas_contratadas_centavos": 466545435524,
+    "despesas_pagas_centavos": 342705631351
   },
   "arquivos_por_uf_atual": {
     "AC": {
@@ -55,7 +55,7 @@
     },
     "GO": {
       "arquivo": "dados/contas_eleitorais_2026_go.b64",
-      "quantidade_candidatos": 827
+      "quantidade_candidatos": 828
     },
     "MA": {
       "arquivo": "dados/contas_eleitorais_2026_ma.b64",
@@ -63,7 +63,7 @@
     },
     "MG": {
       "arquivo": "dados/contas_eleitorais_2026_mg.b64",
-      "quantidade_candidatos": 1690
+      "quantidade_candidatos": 1691
     },
     "MS": {
       "arquivo": "dados/contas_eleitorais_2026_ms.b64",
@@ -123,7 +123,7 @@
     },
     "SP": {
       "arquivo": "dados/contas_eleitorais_2026_sp.b64",
-      "quantidade_candidatos": 2450
+      "quantidade_candidatos": 2453
     },
     "TO": {
       "arquivo": "dados/contas_eleitorais_2026_to.b64",
