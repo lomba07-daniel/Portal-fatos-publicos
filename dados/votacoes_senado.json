@@ -6,7 +6,7 @@
   "escopo": "ano_corrente",
   "ano": 2026,
   "arquivo_anual": "https://legis.senado.leg.br/dadosabertos/arquivos/ListaVotacoes2026.json",
-  "atualizado_em_utc": "2026-10-29T16:05:26+00:00",
+  "atualizado_em_utc": "2026-10-30T15:54:04+00:00",
   "quantidade": 62,
   "validacao": "atividade_parlamentar=3, ausencia=10, licenca=1, nao=1, presente_sem_voto=16, sim=8, voto_secreto=23",
   "votacoes": [
