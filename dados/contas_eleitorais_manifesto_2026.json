@@ -2,19 +2,19 @@
   "ano": 2026,
   "fonte": "Tribunal Superior Eleitoral — Prestação de contas eleitorais de candidatos",
   "fonte_url": "https://dadosabertos.tse.jus.br/dataset/prestacao-de-contas-eleitorais-2026",
-  "gerado_pelo_tse_em": "08/11/2026 04:05:29",
+  "gerado_pelo_tse_em": "09/11/2026 06:08:05",
   "quantidade_candidatos_no_catalogo": 20065,
-  "quantidade_candidatos_com_movimentacao": 19620,
+  "quantidade_candidatos_com_movimentacao": 19624,
   "linhas_oficiais_processadas": {
-    "receitas": 255512,
-    "contratadas": 1772364,
-    "pagas": 1976433
+    "receitas": 255626,
+    "contratadas": 1773201,
+    "pagas": 1977644
   },
   "pagamentos_sem_vinculo_excluidos": 0,
   "totais_centavos": {
-    "receitas_centavos": 699038582671,
-    "despesas_contratadas_centavos": 660052003413,
-    "despesas_pagas_centavos": 637940132189
+    "receitas_centavos": 699058749827,
+    "despesas_contratadas_centavos": 660159436178,
+    "despesas_pagas_centavos": 638073872750
   },
   "arquivos_por_uf_atual": {
     "AC": {
@@ -75,7 +75,7 @@
     },
     "PA": {
       "arquivo": "dados/contas_eleitorais_2026_pa.b64",
-      "quantidade_candidatos": 673
+      "quantidade_candidatos": 674
     },
     "PB": {
       "arquivo": "dados/contas_eleitorais_2026_pb.b64",
@@ -107,7 +107,7 @@
     },
     "RR": {
       "arquivo": "dados/contas_eleitorais_2026_rr.b64",
-      "quantidade_candidatos": 370
+      "quantidade_candidatos": 371
     },
     "RS": {
       "arquivo": "dados/contas_eleitorais_2026_rs.b64",
@@ -119,7 +119,7 @@
     },
     "SE": {
       "arquivo": "dados/contas_eleitorais_2026_se.b64",
-      "quantidade_candidatos": 367
+      "quantidade_candidatos": 368
     },
     "SP": {
       "arquivo": "dados/contas_eleitorais_2026_sp.b64",
@@ -127,7 +127,7 @@
     },
     "TO": {
       "arquivo": "dados/contas_eleitorais_2026_to.b64",
-      "quantidade_candidatos": 327
+      "quantidade_candidatos": 328
     }
   },
   "observacao": "Valores declarados ao TSE e sujeitos a atualização. A ausência de movimentação não significa irregularidade. Nomes, documentos, descrições livres, doadores e fornecedores não são publicados nesta carga agregada."
