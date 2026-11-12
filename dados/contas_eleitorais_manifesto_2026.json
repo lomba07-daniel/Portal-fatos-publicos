@@ -2,19 +2,19 @@
   "ano": 2026,
   "fonte": "Tribunal Superior Eleitoral — Prestação de contas eleitorais de candidatos",
   "fonte_url": "https://dadosabertos.tse.jus.br/dataset/prestacao-de-contas-eleitorais-2026",
-  "gerado_pelo_tse_em": "11/11/2026 04:05:12",
+  "gerado_pelo_tse_em": "12/11/2026 04:05:11",
   "quantidade_candidatos_no_catalogo": 20065,
-  "quantidade_candidatos_com_movimentacao": 19639,
+  "quantidade_candidatos_com_movimentacao": 19649,
   "linhas_oficiais_processadas": {
-    "receitas": 257555,
-    "contratadas": 1775937,
-    "pagas": 1982726
+    "receitas": 263499,
+    "contratadas": 1777664,
+    "pagas": 1985642
   },
   "pagamentos_sem_vinculo_excluidos": 0,
   "totais_centavos": {
-    "receitas_centavos": 699473978773,
-    "despesas_contratadas_centavos": 660943154207,
-    "despesas_pagas_centavos": 639107890490
+    "receitas_centavos": 699576077069,
+    "despesas_contratadas_centavos": 661490174614,
+    "despesas_pagas_centavos": 639882936178
   },
   "arquivos_por_uf_atual": {
     "AC": {
@@ -35,7 +35,7 @@
     },
     "BA": {
       "arquivo": "dados/contas_eleitorais_2026_ba.b64",
-      "quantidade_candidatos": 1169
+      "quantidade_candidatos": 1170
     },
     "BR": {
       "arquivo": "dados/contas_eleitorais_2026_br.b64",
@@ -47,7 +47,7 @@
     },
     "DF": {
       "arquivo": "dados/contas_eleitorais_2026_df.b64",
-      "quantidade_candidatos": 617
+      "quantidade_candidatos": 619
     },
     "ES": {
       "arquivo": "dados/contas_eleitorais_2026_es.b64",
@@ -55,7 +55,7 @@
     },
     "GO": {
       "arquivo": "dados/contas_eleitorais_2026_go.b64",
-      "quantidade_candidatos": 851
+      "quantidade_candidatos": 852
     },
     "MA": {
       "arquivo": "dados/contas_eleitorais_2026_ma.b64",
@@ -75,7 +75,7 @@
     },
     "PA": {
       "arquivo": "dados/contas_eleitorais_2026_pa.b64",
-      "quantidade_candidatos": 677
+      "quantidade_candidatos": 680
     },
     "PB": {
       "arquivo": "dados/contas_eleitorais_2026_pb.b64",
@@ -95,7 +95,7 @@
     },
     "RJ": {
       "arquivo": "dados/contas_eleitorais_2026_rj.b64",
-      "quantidade_candidatos": 1975
+      "quantidade_candidatos": 1976
     },
     "RN": {
       "arquivo": "dados/contas_eleitorais_2026_rn.b64",
@@ -119,7 +119,7 @@
     },
     "SE": {
       "arquivo": "dados/contas_eleitorais_2026_se.b64",
-      "quantidade_candidatos": 369
+      "quantidade_candidatos": 371
     },
     "SP": {
       "arquivo": "dados/contas_eleitorais_2026_sp.b64",
