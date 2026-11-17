@@ -2,10 +2,10 @@
   "eleicao": 2026,
   "cargo": "Deputado Estadual",
   "uf": "SC",
-  "atualizado_em_utc": "2026-11-16T20:41:59+00:00",
-  "periodo": "2023-02-01–2026-11-16",
+  "atualizado_em_utc": "2026-11-17T19:27:10+00:00",
+  "periodo": "2023-02-01–2026-11-17",
   "quantidade_parlamentares": 28,
-  "quantidade_proposicoes": 1449,
+  "quantidade_proposicoes": 1450,
   "arquivo": "dados/proposicoes_alesc_2026_sc.b64",
   "fonte": "https://portalelegis.alesc.sc.gov.br/proposicoes/processo-legislativo",
   "observacao": "A iniciativa de uma proposição não equivale a aprovação, vigência, autoria exclusiva ou posição geral sobre o tema."
