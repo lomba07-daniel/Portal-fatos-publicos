@@ -3,11 +3,11 @@
   "cargo": "Deputado Federal",
   "uf": "SC",
   "legislatura": 57,
-  "atualizado_em_utc": "2026-11-19T19:00:03+00:00",
+  "atualizado_em_utc": "2026-11-20T18:38:15+00:00",
   "quantidade_candidatos": 231,
   "quantidade_com_exercicio_atual": 11,
-  "quantidade_votos": 10563,
-  "total_ceap_centavos": 1742669372,
+  "quantidade_votos": 10789,
+  "total_ceap_centavos": 1744134405,
   "arquivo": "dados/atuacao_camara_2026_sc.b64",
   "observacao": "A ausência nesta carga não significa ausência de atuação pública; o primeiro bloco cobre apenas exercício atual na Câmara, de 2023 a 2026."
 }
