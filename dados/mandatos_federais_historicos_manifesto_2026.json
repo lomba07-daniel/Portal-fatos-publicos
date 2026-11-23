@@ -1,7 +1,7 @@
 {
   "eleicao": 2026,
   "escopo": "mandatos_federais_historicos",
-  "atualizado_em_utc": "2026-11-16T17:25:53+00:00",
+  "atualizado_em_utc": "2026-11-23T19:28:19+00:00",
   "legislaturas_consultadas": [
     51,
     52,
@@ -16,12 +16,12 @@
     "camara": "https://dadosabertos.camara.leg.br/arquivos/deputados/json/deputados.json",
     "senado": "https://legis.senado.leg.br/dadosabertos/senador/lista/legislatura/<legislatura>.json"
   },
-  "quantidade_candidatos_com_historico": 176,
-  "quantidade_registros_de_mandato": 195,
+  "quantidade_candidatos_com_historico": 177,
+  "quantidade_registros_de_mandato": 196,
   "quantidade_ambiguos": 0,
   "por_casa": {
     "Câmara dos Deputados": 167,
-    "Senado Federal": 28
+    "Senado Federal": 29
   },
   "arquivo": "dados/mandatos_federais_historicos_2026.b64",
   "observacao": "O histórico registra exercício parlamentar oficial; candidatura, eleição ou suplência sem exercício não bastam para criar vínculo."
