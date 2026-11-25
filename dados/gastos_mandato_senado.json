@@ -14,10 +14,10 @@
     2026
   ],
   "ano_corrente_parcial": 2026,
-  "atualizado_em_utc": "2026-11-24T20:18:48+00:00",
+  "atualizado_em_utc": "2026-11-25T19:32:35+00:00",
   "total_ceaps_periodo": 1238522.09,
-  "total_fora_ceaps_periodo": 926611.13,
-  "total_mostrado_periodo": 2165133.22,
+  "total_fora_ceaps_periodo": 926641.93,
+  "total_mostrado_periodo": 2165164.02,
   "agregado_ceaps": [
     {
       "categoria": "Passagens aéreas, aquáticas e terrestres nacionais",
@@ -51,7 +51,7 @@
   "agregado_fora_ceaps": [
     {
       "categoria": "Correios",
-      "valor": 605732.32
+      "valor": 605763.12
     },
     {
       "categoria": "Aquisição de passagens aéreas (ATC 2/2023)",
@@ -579,7 +579,7 @@
         },
         {
           "categoria": "Correios",
-          "valor": 14782.54
+          "valor": 14813.34
         },
         {
           "categoria": "Cotas para Impulsionamento em Mídias Sociais",
@@ -590,8 +590,8 @@
           "valor": 0.0
         }
       ],
-      "total_fora_ceaps": 23321.45,
-      "total_mostrado": 116799.95,
+      "total_fora_ceaps": 23352.25,
+      "total_mostrado": 116830.75,
       "fonte_api": "https://adm.senado.gov.br/adm-dadosabertos/api/v1/senadores/5894/recursos-utilizados?ano=2026&formato=json",
       "fonte_visual": "https://www6g.senado.leg.br/transparencia/sen/5894/?ano=2026"
     }
